@@ -1,0 +1,26 @@
+.edge-meta-container {
+    background: white;
+    border: 1px solid gainsboro;
+    border-radius: 50px;
+    height: 28px;
+    overflow: auto;
+    width: max-content;
+}
+
+.edge-meta-container>p {
+    float: left;
+    font-size: 9pt;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.edge-meta-buttons-container {
+    float: right;
+}
+
+.edge-meta-buttons-container>button {
+    height: 30px;
+    width: 30px;
+    font-size: 9pt;
+}

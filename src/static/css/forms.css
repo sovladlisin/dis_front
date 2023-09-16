@@ -1,0 +1,347 @@
+.m-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 9px gainsboro;
+    width: 600px;
+    z-index: 99;
+    max-height: 650px;
+    overflow: auto;
+}
+
+.m-form-title {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.m-form-fields {
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+
+.m-form-fields>label {
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+}
+
+.label-form {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+    border: 1px solid gainsboro;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.label-form>label {
+    font-weight: bold;
+    font-size: 9pt;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+}
+
+input {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    font-size: 9pt;
+    padding: 0 5px;
+    background: #ececfd;
+}
+
+.m-form-controls>button {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 9pt;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.m-form-controls {
+    margin-top: 10px;
+}
+
+.form-main-item-selector-button-container {
+    font-size: 9pt;
+    line-height: 30px;
+    padding: 0 10px;
+    border-radius: 30px;
+    display: grid;
+}
+
+.form-main-item-selector-button-window-items {
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    overflow: auto;
+    height: 100px;
+    display: grid;
+    margin-top: 10px;
+}
+
+.form-main-item-selector-button-window {
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form-main-item-selector-button-window-search {
+    border-radius: 10px;
+    border: 1px solid gainsboro;
+    position: relative;
+}
+
+.form-main-item-selector-button-window-search>span {
+    position: absolute;
+    left: 0;
+    text-align: center;
+    top: 0;
+    height: 30px;
+    width: 30px;
+    color: #969696;
+}
+
+.form-main-item-selector-button-window-search>input {
+    width: calc(100% - 30px);
+    padding: 0 0 0 30px;
+    font-size: 9pt;
+}
+
+.form-main-item-selector-button-window-items>button {
+    height: 30px;
+}
+
+.form-main-item-selector-button {
+    height: 30px;
+    background: #ececfd;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.graph-apply-pattern-form-buttons {
+    margin-top: 10px;
+}
+
+.graph-apply-pattern-form-buttons>button {
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 30px;
+    font-size: 9pt;
+    margin-right: 10px;
+}
+
+.form-main-item-selector-button-window-items-selected {
+    background: #ececfd;
+}
+
+.m-mini-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 4px #999;
+    border-radius: 10px;
+}
+
+.m-mini-form-fields {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.m-mini-form-fields>label {
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+    color: #282828;
+}
+
+.m-mini-form-title {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.m-mini-form-controls>button {
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 30px;
+    margin-right: 10px;
+    font-size: 9pt;
+}
+
+.m-form-entity-form-section {
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.m-form-entity-form-section-header p {
+    height: 30px;
+    font-size: 11pt;
+    font-weight: bold;
+    float: left;
+    line-height: 30px;
+}
+
+.m-form-entity-form-section-header {
+    border-bottom: 1px solid gainsboro;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.m-form-entity-form-section-header>button {
+    float: right;
+    height: 30px;
+    width: 30px;
+    font-size: 9pt;
+}
+
+.m-form-entity-form-section-fields {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+
+.m-form-entity-form-section-fields label {
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+}
+
+.m-form select {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    font-size: 9pt;
+    padding: 0 5px;
+    background: #ececfd;
+}
+
+.m-form-entity-form-section-header-title-description {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-left: 10px;
+    float: left;
+}
+
+.m-form-entity-form-section-header-title-description-bubble {
+    height: 20px;
+    font-size: 8pt;
+    background: #ececfd;
+    border-radius: 30px;
+    line-height: 20px;
+    padding: 0 10px;
+    width: max-content;
+    margin: 5px 0;
+    color: #2c2c2c;
+}
+
+.m-form-entity-form-section-header-title {
+    width: max-content;
+    float: left;
+}
+
+.m-form-entity-form-section-header-title-description>i {
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 9pt;
+    margin: 5px 0;
+    color: #ff3262;
+}
+
+.m-form-select-list {
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.m-form-select-list>button {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+    height: 30px;
+    background: #ececfd;
+    padding: 0 5px;
+    float: left;
+    margin-right: 5px;
+}
+
+.m-form-select-list>button>* {
+    line-height: 30px;
+    font-size: 9pt;
+}
+
+.m-form-select-list-with-search {
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+.m-form-select-list-with-search-list {
+    padding: 10px;
+    border: 1px solid gainsboro;
+    margin-top: 10px;
+    border-radius: 5px;
+    height: 200px;
+    overflow: auto;
+    display: grid;
+}
+
+.m-form-select-list-with-search-list>button {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+    gap: 10px;
+}
+
+.m-form-select-list-with-search-list>button>p {
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+    text-align: left;
+}
+
+.m-form-select-list-with-search-list>button>i {
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #ececfd;
+}
+
+.m-form-select-list-with-search-search {
+    position: relative;
+}
+
+.m-form-select-list-with-search-search>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #9191b6;
+    font-size: 9pt;
+}
+
+.m-form-select-list-with-search-search>input {
+    padding: 0 0 0 30px;
+}

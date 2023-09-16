@@ -1,0 +1,228 @@
+.project-header {
+    height: 70px;
+    background: white;
+    box-shadow: 0 0 3px gainsboro;
+}
+
+.project-header-name {
+    line-height: 70px;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #414140;
+    margin: 0 20px 0 0;
+}
+
+.project-header-navigation {
+    float: right;
+    height: 70px;
+}
+
+.project-header-navigation>a {
+    height: 70px;
+    line-height: 70px;
+    padding: 0 10px;
+    font-size: 10pt;
+}
+
+.project-header-controls {
+    float: right;
+    height: 70px;
+}
+
+.project-header-controls>button {
+    height: 70px;
+    width: 70px;
+    color: #5a5a5a;
+}
+
+.project-header-inner {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.project-workspace {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.project-ontology-select {
+    height: 30px;
+    margin: 20px 0;
+}
+
+.project-ontology-select>button {
+    height: 30px;
+    border: 1px solid gainsboro;
+    padding: 0 10px;
+    border-radius: 15px;
+    font-size: 10pt;
+    margin-right: 10px;
+}
+
+.project-ontology-graph-container {
+    height: 500px;
+    border-radius: 15px;
+    border: 1px solid gainsboro;
+}
+
+.project-ontology-graph-container-empty {
+    width: 100%;
+    text-align: center;
+    margin: auto 0;
+    display: block;
+    height: 500px;
+    line-height: 500px;
+    font-weight: bold;
+    font-size: 30pt;
+    color: #c7c7c7;
+}
+
+.project-ontology-select>button.selected {
+    background: #386bee;
+    color: white;
+    border: #386bee;
+    box-shadow: 0 0px 2px #386bee;
+}
+
+.project-custom-page-title {
+    font-size: 17pt;
+    color: #3f3f3f;
+    height: 70px;
+    line-height: 70px;
+}
+
+.project-custom-page-search-1 {
+    height: 70px;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+}
+
+.project-custom-page-search-1>button {
+    height: 70px;
+    padding: 0 10px;
+    font-size: 19pt;
+    font-weight: bold;
+    color: #b8b8b8;
+}
+
+.project-custom-page-list-1 {
+    margin: 20px 0px;
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto auto;
+    gap: 0 50px;
+}
+
+.project-custom-page-list-1>p {
+    height: 50px;
+    text-align: left;
+    font-weight: bold;
+    color: #2d2d2d;
+    line-height: 50px;
+}
+
+.project-custom-page-list-1>p:hover {
+    box-shadow: 0 1px 0px gainsboro;
+    transition: 0.3s;
+}
+
+
+.project-custom-page-list-1>p>button {
+    height: 40px;
+    width: 40px;
+    color: #767676;
+    margin: 5px;
+}
+
+.project-custom-page-list-1>p>button:hover {
+    border: 1px solid gainsboro;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.project-files-upload-file {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    height: 50px;
+    padding: 0 20px;
+    background: #386bee;
+    border-radius: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.project-files-search {
+    height: 50px;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    position: relative;
+}
+
+.project-files-search>input {
+    padding: 0 0 0 50px;
+    height: 50px;
+    font-size: 13pt;
+    width: calc(100% - 50px);
+    border-radius: 0;
+    background: none;
+}
+
+.project-files-search>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+    color: gray;
+}
+
+.project-files-list {
+    margin: 30px auto;
+    overflow: auto;
+    width: 100%;
+}
+
+.project-files-list>div {
+    float: left;
+    margin-right: 20px;
+}
+
+.file-pin-container {
+    height: 30px;
+    background: #ff5f5f;
+    border-radius: 5px;
+    color: white;
+}
+
+.file-pin-id {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    font-size: 9pt;
+    color: white;
+}
+
+.file-pin-title {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+    width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.file-pin-download-link {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    float: left;
+    display: block;
+    color: white;
+    font-size: 9pt;
+}

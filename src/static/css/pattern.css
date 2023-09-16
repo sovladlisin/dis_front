@@ -1,0 +1,419 @@
+.graph-pattern-menu {
+    position: absolute;
+    top: 20px;
+    right: 175px;
+    background: white;
+    box-shadow: 0 0 3px gainsboro;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 6;
+}
+
+.graph-pattern-menu-header-search {
+    position: relative;
+    border: 1px solid gainsboro;
+    border-radius: 50px;
+    float: left;
+}
+
+.graph-pattern-menu-header-search>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: gainsboro;
+}
+
+.graph-pattern-menu-header-search>input {
+    width: calc(100% - 30px);
+    padding: 0 0 0 30px;
+    font-size: 10pt;
+    height: 30px;
+    background: none;
+}
+
+.graph-pattern-menu-header-addbutton {
+    float: left;
+    background: #5f9dff;
+    color: white;
+    border-radius: 40px;
+    height: 30px;
+    margin-left: 10px;
+    font-size: 9pt;
+    padding: 0 10px;
+}
+
+.graph-pattern-item>label {
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+    display: block;
+    float: left;
+}
+
+.graph-pattern-item {
+    width: 100%;
+    height: 30px;
+}
+
+.graph-pattern-menu-header {
+    height: 30px;
+}
+
+
+.graph-pattern-item>button {
+    float: right;
+    height: 30px;
+    width: 30px;
+    color: #575757;
+    display: block;
+}
+
+.graph-pattern-items {
+    border: 1px solid gainsboro;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.graph-pattern-form-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 0 0 3px white;
+    z-index: 7;
+    padding: 10px;
+    border-radius: 20px;
+    width: 700px;
+    height: 400px;
+}
+
+.graph-pattern-form-graph {
+    margin-top: 10px;
+    height: 360px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid gainsboro;
+}
+
+.graph-pattern-form-controls {
+    height: 30px;
+}
+
+.graph-pattern-form-controls>button {
+    float: left;
+    height: 30px;
+    padding: 0 10px;
+    margin-right: 10px;
+    border-radius: 50px;
+    font-size: 9pt;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0 10px;
+}
+
+.pattern-edge-form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 0 0 7px gainsboro;
+    padding: 20px;
+    z-index: 7;
+    border-radius: 10px;
+}
+
+.pattern-edge-form-container-search {
+    position: relative;
+    border: 1px solid gainsboro;
+    border-radius: 50px;
+}
+
+.pattern-edge-form-container-search>span {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 30px;
+    text-align: center;
+    color: gainsboro;
+}
+
+.pattern-edge-form-container-search>input {
+    width: calc(100% - 30px);
+    height: 30px;
+    font-size: 9pt;
+    padding: 0 0 0 30px;
+}
+
+.pattern-edge-form-container-items {
+    display: grid;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.pattern-edge-form-container-items>button {
+    font-size: 9pt;
+    height: 30px;
+    text-align: left;
+    border: 1px solid gainsboro;
+    border-radius: 40px;
+    margin-bottom: 5px;
+    padding: 0 10px;
+}
+
+.pattern-edge-form-container-items>button:hover {
+    background: gainsboro;
+}
+
+.pattern-node-meta-container {
+    width: max-content;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 0 4px gainsboro;
+    padding: 0 10px;
+    display: grid;
+}
+
+.pattern-node-meta-container>p {
+    padding: 0 10px;
+    line-height: 35px;
+    height: 35px;
+    font-size: 9pt;
+    float: left;
+}
+
+.pattern-node-meta {
+    display: grid;
+    grid-template-columns: auto auto;
+    font-size: 9pt;
+    padding: 0 10px;
+    justify-items: left;
+    justify-content: left;
+    gap: 0 10px;
+}
+
+.pattern-node-meta>label {
+    height: 30px;
+    line-height: 30px;
+}
+
+.pattern-node-meta>p {
+    height: 30px;
+    line-height: 30px;
+}
+
+.pattern-selector {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 9;
+    padding: 20px;
+    box-shadow: 0 0 4px gainsboro;
+    border-radius: 10px;
+}
+
+.pattern-selector-fields {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+    justify-items: left;
+    gap: 10px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.pattern-selector-fields>label {
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+}
+
+.pattern-selector-fields>button {
+    height: 30px;
+    font-size: 9pt;
+    background: gainsboro;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.pattern-selector-buttons {
+    margin-top: 10px;
+}
+
+.pattern-selector-buttons>button {
+    padding: 0 10px;
+    font-size: 9pt;
+    height: 30px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.form-item-selector {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 4px gainsboro;
+    border-radius: 10px;
+    z-index: 15;
+}
+
+.form-item-selector-search {
+    border: 1px solid gainsboro;
+    height: 30px;
+    border-radius: 30px;
+    position: relative;
+}
+
+.form-item-selector-search>span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: gainsboro;
+    font-size: 9pt;
+}
+
+.form-item-selector-search>input {
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+    padding: 0 0 0 30px;
+    width: calc(100% - 30px);
+}
+
+.form-item-selector-items {
+    height: 200px;
+    overflow: auto;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 445px;
+}
+
+.form-item-selector-items>button {
+    font-size: 10pt;
+    height: 30px;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.form-item-selector-items>button:hover {
+    background: gainsboro;
+}
+
+.graph-pattern-form-window-footer {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+}
+
+.graph-pattern-form-window-footer>input {
+    height: 40px;
+    border-radius: 30px;
+    padding: 0 0 0 10px;
+    font-size: 9pt;
+    box-shadow: 0 0 4px white;
+}
+
+.graph-pattern-form-window-footer>button {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 9pt;
+    border-radius: 40px;
+}
+
+.graph-pattern-form-window-footer>* {
+    margin-right: 15px;
+}
+
+.graph-apply-pattern-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.graph-apply-pattern-form-title {
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.graph-apply-pattern-form-fields {
+    border: 1px solid gainsboro;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+    gap: 0 20px;
+}
+
+.graph-apply-pattern-form-section-name {
+    margin-top: 15px;
+    font-size: 10pt;
+    color: #5d5d5d;
+}
+
+.graph-apply-pattern-form-fields>label {
+    font-size: 9pt;
+    height: 30px;
+    line-height: 30px;
+}
+
+.graph-pattern-form-controls>button>* {
+    height: 30px;
+    line-height: 30px;
+}
+
+.form-item-selector-input {
+    margin-top: 10px;
+}
+
+.form-item-selector-input>label {
+    font-size: 8pt;
+    color: #5c5c5c;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    float: left;
+    padding-left: 5px;
+}
+
+.form-item-selector-input>input {
+    margin: 0 10px;
+}
+
+.form-item-selector-input>button {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 9pt;
+    border-radius: 30px;
+}

@@ -1,0 +1,67 @@
+.m-entity-info {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    background: white;
+    width: 500px;
+    overflow: auto;
+    height: calc(100% - 20px);
+    padding: 0 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 3px #a8a8a8;
+    overflow: auto;
+}
+
+.m-entity-title {
+    height: 70px;
+    line-height: 70px;
+    font-size: 16pt;
+    font-weight: bold;
+    color: #212121;
+}
+
+.m-entity-fields {
+    display: grid;
+    grid-template-columns: 100px auto;
+    gap: 10px;
+    justify-content: left;
+}
+
+.m-entity-fields>label {
+    color: #6f6f6f;
+    font-size: 9pt;
+    height: min-content;
+    margin: auto;
+    width: 100px;
+    line-height: 17px;
+}
+
+.m-entity-fields>p {
+    font-size: 10pt;
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.entity-label-container {
+    display: grid;
+    gap: 5px;
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+}
+
+.m-entity-attributes {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid gainsboro;
+    width: 100%;
+}
+
+.entity-label-container>p {
+    font-size: 10pt;
+    font-weight: bold;
+}
