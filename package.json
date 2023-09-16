@@ -9,7 +9,7 @@
     "dev": "webpack serve --mode development",
     "heroku-prebuild": "npm install --dev",
     "heroku-postbuild": "npm run build",
-    "start": "serve -s"
+    "start": "serve -s build"
   },
   "keywords": [],
   "author": "",
