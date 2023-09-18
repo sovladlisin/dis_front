@@ -14,7 +14,7 @@ import './src/static/css/project.css'
 import './src/static/css/info.css'
 
 
-// import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 
