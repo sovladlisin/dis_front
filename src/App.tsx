@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { RootStore } from './store';
 import EntityInfo from './components/EntityInfo';
 import ProjectFiles from './components/Project/ProjectFiles';
+import DDD from './components/DDD';
 
 interface IAppProps {
 }
@@ -31,6 +32,7 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
       <Route path="/graph/:uri" component={GraphLinked} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/" component={Home} />
+      <Route exact path="/ddd" component={DDD} />
 
 
 

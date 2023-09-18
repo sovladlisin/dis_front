@@ -6,16 +6,20 @@ module.exports = {
     output: {
         filename: "index.js",
         path: path.resolve(__dirname, "build"),
+        publicPath: '/'
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public", "index.html"),
+            name: "index.html",
+            inject: false,
         }),
     ],
     devServer: {
         static: {
             directory: path.join(__dirname, "build"),
         },
+        historyApiFallback: true,
         port: 3000,
     },
     module: {
