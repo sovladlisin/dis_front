@@ -1,6 +1,7 @@
 import { TNode } from "../graph/types"
 
 export const ONTOLOGY_GET_ONTOLOGIES = 'ONTOLOGY_GET_ONTOLOGIES'
+export const ONTOLOGY_DELETE_ONTOLOGY = 'ONTOLOGY_DELETE_ONTOLOGY'
 export const ONTOLOGY_CREATE_ONTOLOGY = 'ONTOLOGY_CREATE_ONTOLOGY'
 
 export const ONTOLOGY_GET_RESOURCE_ONTOLOGIES = 'ONTOLOGY_GET_RESOURCE_ONTOLOGIES'
@@ -31,6 +32,10 @@ interface IGetItemsByLabels {
     type: typeof ONTOLOGY_GET_ITEMS_BY_LABELS,
     payload: TNode[]
 }
+interface IDeleteOntology {
+    type: typeof ONTOLOGY_DELETE_ONTOLOGY,
+    payload: string
+}
 
 interface ICollectEntity {
     type: typeof ONTOLOGY_COLLECT_ENTITY,
@@ -47,4 +52,4 @@ interface ILoading {
     payload: boolean
 }
 
-export type TOntologyDispatchTypes = IGetOntologies | ICreateOntology | IGetItemsByLabels | ICollectEntity | ILoading | IOpenEntity
+export type TOntologyDispatchTypes = IDeleteOntology | IGetOntologies | ICreateOntology | IGetItemsByLabels | ICollectEntity | ILoading | IOpenEntity

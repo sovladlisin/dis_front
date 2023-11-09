@@ -1,5 +1,5 @@
 import { TNode } from "../actions/graph/types"
-import { ONTOLOGY_COLLECT_ENTITY, ONTOLOGY_COLLECT_ENTITY_LOADING, ONTOLOGY_CREATE_ONTOLOGY, ONTOLOGY_CREATE_PATTERN_ONTOLOGY, ONTOLOGY_CREATE_RESOURCE_ONTOLOGY, ONTOLOGY_GET_ITEMS_BY_LABELS, ONTOLOGY_GET_ONTOLOGIES, ONTOLOGY_GET_PATTERN_ONTOLOGIES, ONTOLOGY_GET_RESOURCE_ONTOLOGIES, ONTOLOGY_OPEN_ENTITY, TOntologyDispatchTypes } from "../actions/ontology/types"
+import { ONTOLOGY_COLLECT_ENTITY, ONTOLOGY_COLLECT_ENTITY_LOADING, ONTOLOGY_CREATE_ONTOLOGY, ONTOLOGY_CREATE_PATTERN_ONTOLOGY, ONTOLOGY_CREATE_RESOURCE_ONTOLOGY, ONTOLOGY_DELETE_ONTOLOGY, ONTOLOGY_GET_ITEMS_BY_LABELS, ONTOLOGY_GET_ONTOLOGIES, ONTOLOGY_GET_PATTERN_ONTOLOGIES, ONTOLOGY_GET_RESOURCE_ONTOLOGIES, ONTOLOGY_OPEN_ENTITY, TOntologyDispatchTypes } from "../actions/ontology/types"
 
 interface IDefaultState {
     ontologies: TNode[],
@@ -26,6 +26,13 @@ const defaultState: IDefaultState = {
 
 export const ontologyReducer = (state: IDefaultState = defaultState, action: TOntologyDispatchTypes) => {
     switch (action.type) {
+        case ONTOLOGY_DELETE_ONTOLOGY:
+            return {
+                ...state,
+                resource_ontologies: state.resource_ontologies.filter(o => o.data.uri != action.payload),
+                pattern_ontologies: state.pattern_ontologies.filter(o => o.data.uri != action.payload),
+                ontologies: state.ontologies.filter(o => o.data.uri != action.payload),
+            }
         case ONTOLOGY_CREATE_PATTERN_ONTOLOGY:
             return {
                 ...state,

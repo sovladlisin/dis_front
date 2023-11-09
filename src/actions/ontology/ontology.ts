@@ -2,7 +2,7 @@ import axios from "axios"
 import { Dispatch } from "react"
 import { SERVER_URL } from "../../utils"
 import { withToken } from "../auth/auth"
-import { ONTOLOGY_COLLECT_ENTITY, ONTOLOGY_COLLECT_ENTITY_LOADING, ONTOLOGY_CREATE_ONTOLOGY, ONTOLOGY_CREATE_PATTERN_ONTOLOGY, ONTOLOGY_CREATE_RESOURCE_ONTOLOGY, ONTOLOGY_GET_ITEMS_BY_LABELS, ONTOLOGY_GET_ONTOLOGIES, ONTOLOGY_GET_PATTERN_ONTOLOGIES, ONTOLOGY_GET_RESOURCE_ONTOLOGIES, ONTOLOGY_OPEN_ENTITY, TOntologyDispatchTypes } from "./types"
+import { ONTOLOGY_COLLECT_ENTITY, ONTOLOGY_COLLECT_ENTITY_LOADING, ONTOLOGY_CREATE_ONTOLOGY, ONTOLOGY_CREATE_PATTERN_ONTOLOGY, ONTOLOGY_CREATE_RESOURCE_ONTOLOGY, ONTOLOGY_DELETE_ONTOLOGY, ONTOLOGY_GET_ITEMS_BY_LABELS, ONTOLOGY_GET_ONTOLOGIES, ONTOLOGY_GET_PATTERN_ONTOLOGIES, ONTOLOGY_GET_RESOURCE_ONTOLOGIES, ONTOLOGY_OPEN_ENTITY, TOntologyDispatchTypes } from "./types"
 
 export const getOntologies = () => (dispatch: Dispatch<TOntologyDispatchTypes>) => {
     axios.get(SERVER_URL + '/getOntologies').then(res => {
@@ -94,6 +94,18 @@ export const getItemsByLabels = (ontology_uri: string, labels: string[], custom_
         dispatch({
             type: ONTOLOGY_GET_ITEMS_BY_LABELS,
             payload: res.data
+        })
+    }).catch((err) => {
+
+    })
+}
+
+export const deleteOntology = (ontology_uri: string) => (dispatch: Dispatch<TOntologyDispatchTypes>) => {
+    const params = withToken({ ontology_uri })
+    axios.delete(SERVER_URL + '/deleteOntology', params).then(res => {
+        dispatch({
+            type: ONTOLOGY_DELETE_ONTOLOGY,
+            payload: ontology_uri
         })
     }).catch((err) => {
 

@@ -1,25 +1,29 @@
 .node-meta-container {
     width: max-content;
-    height: 35px;
+    height: inherit;
     border: none;
-    border-radius: 60px;
-    background: white;
+    border-radius: 5px;
     box-shadow: 0 0 4px gainsboro;
     padding: 0 10px;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
 }
 
 .node-meta-container>p {
-    padding: 0 10px;
-    line-height: 35px;
-    height: 35px;
-    font-size: 9pt;
-    float: left;
+    padding: 5px 5px;
+    line-height: 19px;
+    font-size: 8pt;
+    width: min-content;
+    text-align: center;
 }
 
 .node-meta-buttons-container {
     float: right;
     height: 35px;
 }
+
+
 
 .node-meta-buttons-container>button {
     height: 35px;

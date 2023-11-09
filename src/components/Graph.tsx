@@ -65,6 +65,7 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
     const edgeTypes = React.useMemo(() => ({ mainEdge: MainEdge }), []);
 
     const getToggledData = (node: TNode, arcs: TArc[]) => {
+        return []
         var selected_nodes: string[] = []
         const recurr = (s_n: string[], current: string) => {
             arcs.filter(e => e.target === current).map(e => {
@@ -99,7 +100,7 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
     const updateGraphLayout = (l_nodes: TNode[] | any, l_edges: TArc[] | any) => {
         var dagre = require("dagre");
         var g = new dagre.graphlib.Graph();
-        g.setGraph({ rankdir: 'BT', nodesep: 50, minlen: 2, ranksep: 150, ranker: 'network-simplex' });
+        g.setGraph({ rankdir: 'BT', nodesep: 10, minlen: 2, ranksep: 150, ranker: 'network-simplex' });
         g.setDefaultEdgeLabel(function () { return {}; });
 
         var filter = []
@@ -140,7 +141,7 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
         })
         setNodes(l_nodes_new.map(node => {
             node.position.x = new_nodes[node.data.uri].x - calcNodeWidthForLayout(node) / 2
-            node.position.y = new_nodes[node.data.uri].y - 35 / 2
+            node.position.y = new_nodes[node.data.uri].y
             return node
         }))
     }

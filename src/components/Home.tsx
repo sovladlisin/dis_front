@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { TNode } from '../actions/graph/types';
-import { getOntologies, getPatternOntologies, getResourceOntologies } from '../actions/ontology/ontology';
+import { deleteOntology, getOntologies, getPatternOntologies, getResourceOntologies } from '../actions/ontology/ontology';
 import { RootStore } from '../store';
 import { encode, getNodeLabel } from '../utils';
 import OntologyForm from './Forms/OntologyForm';
@@ -31,6 +31,10 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
     const [branchOntology, setBranchOntology] = React.useState<TNode>(null)
     const [branchResource, setBranchResource] = React.useState<TNode>(null)
 
+
+    const onDeleteOntology = (ontology_uri: string) => {
+        dispatch(deleteOntology(ontology_uri))
+    }
     return <>
         <div className='home-container'>
             <h1 className='home-title'>Проекты</h1>
@@ -55,6 +59,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
                             <p>{getNodeLabel(o)}</p>
                             <Link className='home-ontology-list-open' target='_blank' to={'/graph/' + encode(o.data.uri)}>Открыть</Link>
                             <button className='home-ontology-list-expand' onClick={_ => setBranchResource(o)}>Наследовать</button>
+                            <button className='home-ontology-list-expand' onClick={_ => onDeleteOntology(o.data.uri)}>Удалить</button>
                         </div>
                     </>
                 })}
@@ -70,6 +75,8 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
                             <p>{getNodeLabel(o)}</p>
                             <Link className='home-ontology-list-open' target='_blank' to={'/graph/' + encode(o.data.uri)}>Открыть</Link>
                             <button className='home-ontology-list-expand' onClick={_ => setBranchOntology(o)}>Наследовать</button>
+                            <button className='home-ontology-list-expand' onClick={_ => onDeleteOntology(o.data.uri)}>Удалить</button>
+
                         </div>
                     </>
                 })}
@@ -85,6 +92,8 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
                         <div className=''>
                             <p>{getNodeLabel(o)}</p>
                             <Link className='home-ontology-list-open' target='_blank' to={'/graph/' + encode(o.data.uri)}>Открыть</Link>
+                            <button className='home-ontology-list-expand' onClick={_ => onDeleteOntology(o.data.uri)}>Удалить</button>
+
                         </div>
                     </>
                 })}

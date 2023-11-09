@@ -37,12 +37,12 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
             const name = getNodeLabel(att)
             const uri = att.data.uri
 
-            const isFile = att.data[LABEL].includes('File@en')
+            // const isFile = att.data[LABEL].includes('File@en')
             return <>
                 <label>{name}</label>
 
-                {isFile && <span>File</span>}
-                {!isFile && <label>{node.data.params_values[uri]}</label>}
+                {/* {isFile && <span>File</span>}
+                {!isFile && <label>{node.data.params_values[uri]}</label>} */}
             </>
         })
 
@@ -91,7 +91,7 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
             <div className='m-entity-fields'>
                 <label>Название</label>
                 <div className="entity-label-container">
-                    {node.data[LABEL].map(l => {
+                    {node.data[LABEL]?.map(l => {
                         return <p>{l.split('@')[0]}<span>{l.split('@')[1]}</span></p>
                     })}
                 </div>
