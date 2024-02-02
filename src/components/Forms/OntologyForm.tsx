@@ -36,7 +36,7 @@ const OntologyForm: React.FunctionComponent<IOntologyFormProps> = (props) => {
         if (props.create_type === 11)
             dispatch(branchOntology(props.ontology.data.uri, state.label, state.comment, 'Ontology'))
         if (props.create_type === 22)
-            dispatch(branchOntology(props.ontology.data.uri, state.label, state.comment, 'Resource'))
+            dispatch(branchOntology(props.ontology.data.uri, state.label, state.comment, 'ResourceOntology'))
         // props.onClose()
     }
 

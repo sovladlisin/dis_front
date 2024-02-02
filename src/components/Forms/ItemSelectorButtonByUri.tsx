@@ -8,16 +8,16 @@ import { RootStore } from '../../store';
 import { CLASS, getNodeLabel, readLabel, SERVER_URL } from '../../utils';
 import { withToken } from '../../actions/auth/auth';
 
-interface IItemSelectorButtonProps {
+interface IItemSelectorButtonByUriProps {
     title: string,
     onChange: (node: TNode) => void,
     labels: string[],
     ontology_uri: string,
-    selected: TNode,
+    selected: string,
     custom_q?: string
 }
 
-const ItemSelectorButton: React.FunctionComponent<IItemSelectorButtonProps> = (props) => {
+const ItemSelectorButtonByUri: React.FunctionComponent<IItemSelectorButtonByUriProps> = (props) => {
 
     const dispatch = useDispatch()
     // const itemsState = useSelector((state: RootStore) => state.ontology.items_by_labels)
@@ -63,14 +63,14 @@ const ItemSelectorButton: React.FunctionComponent<IItemSelectorButtonProps> = (p
                     <div className='form-main-item-selector-button-window-items'>
                         <button className={!props.selected ? 'form-main-item-selector-button-window-items-selected' : ''} onClick={_ => { props.onChange(null); setSelectorMenu(false) }}>Не указано</button>
                         {itemsState.map(node => {
-                            const selected = props.selected && props.selected.data.uri === node.data.uri ? 'form-main-item-selector-button-window-items-selected' : ''
+                            const selected = props.selected && props.selected === node.data.uri ? 'form-main-item-selector-button-window-items-selected' : ''
                             return <button className={selected} onClick={_ => { props.onChange(node); setSelectorMenu(false) }}>{getNodeLabel(node)}</button>
                         })}
                     </div>
                 </div>
             </>}
             <button onClick={_ => setSelectorMenu(true)} className='form-main-item-selector-button'>
-                {getNodeLabel(props.selected)}
+                {getNodeLabel(itemsState.find(i => i.data.uri === props.selected))}
             </button>
         </div>
 
@@ -78,4 +78,4 @@ const ItemSelectorButton: React.FunctionComponent<IItemSelectorButtonProps> = (p
     </>;
 };
 
-export default ItemSelectorButton;
+export default ItemSelectorButtonByUri;

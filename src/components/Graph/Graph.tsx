@@ -2,27 +2,27 @@ import * as React from 'react';
 import { useCallback } from 'react';
 
 import 'reactflow/dist/style.css';
-import MainEdge from './Graph/MainEdge';
-import MainNode from './Graph/MainNode';
+import MainEdge from './MainEdge';
+import MainNode from './MainNode';
 import { useDispatch, useSelector } from 'react-redux';
-import { applyPattern, collectPatterns, createObject, createRelation, deleteEntity, getGraph, savePattern, toggleNode } from '../actions/graph/graph';
-import { RootStore } from '../store';
-import Loading from './Loading';
-import { TArc, TNode, TPattern } from '../actions/graph/types';
-import { calcNodeWidthForLayout, checkPattern, CLASS, DATATYPE_PROPERTY, decode, getRandomInt, HAS_TYPE, MAIN_MARKER, OBJECT, OBJECT_PROPERTY, PROPERTY_DOMAIN, PROPERTY_RANGE, SUB_CLASS } from '../utils';
-import ClassForm from './Forms/ClassForm';
-import ObjectForm from './Forms/ObjectForm';
-import GraphFlowWithProvider from './GraphFlowWithProvider';
-import PatternMenu from './Graph/PatternMenu';
-import PatternForm from './Forms/Pattern/PatternForm';
-import ApplyPatternForm from './Forms/ApplyPatternForm';
-import EntityForm from './Forms/EntityForm/EntityForm';
-import { openEntity } from '../actions/ontology/ontology';
-import OntologyPatternMenu from './Graph/OntologyPatternMenu';
+import { applyPattern, collectPatterns, createObject, createRelation, deleteEntity, getGraph, savePattern, toggleNode } from '../../actions/graph/graph';
+import { RootStore } from '../../store';
+import Loading from '../Loading';
+import { TArc, TNode, TPattern } from '../../actions/graph/types';
+import { calcNodeWidthForLayout, checkPattern, CLASS, DATATYPE_PROPERTY, decode, getRandomInt, HAS_TYPE, MAIN_MARKER, OBJECT, OBJECT_PROPERTY, PROPERTY_DOMAIN, PROPERTY_RANGE, SUB_CLASS } from '../../utils';
+import ClassForm from '../Forms/ClassForm';
+import ObjectForm from '../Forms/ObjectForm';
+import PatternMenu from './PatternMenu';
+import PatternForm from '../Forms/Pattern/PatternForm';
+import ApplyPatternForm from '../Forms/ApplyPatternForm';
+import EntityForm from '../Forms/EntityForm/EntityForm';
+import { openEntity } from '../../actions/ontology/ontology';
+import OntologyPatternMenu from './OntologyPatternMenu';
 import ReactFlow, { useOnSelectionChange, useReactFlow, MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, applyEdgeChanges } from 'reactflow';
+import GraphFlowWithProvider from './GraphFlowWithProvider';
 
 interface IGraphProps {
-    uri: string
+    uri: string,
 }
 
 const Graph: React.FunctionComponent<IGraphProps> = (props) => {
@@ -173,7 +173,7 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
             p.target_query = checkPattern(p)
             return p
         })
-        dispatch(collectPatterns(l_patterns))
+        // dispatch(collectPatterns(l_patterns))
     }, [])
 
 

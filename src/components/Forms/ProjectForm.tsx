@@ -21,6 +21,7 @@ const ProjectForm: React.FunctionComponent<IProjectFormProps> = (props) => {
     const [project, setProject] = React.useState<TProject>(props.project ? props.project : {
         name: 'Не указано',
         id: -1,
+        pages: [],
         ontologies_uris: [],
         res_ontologies_uris: '',
         selected_classes_uris: [],

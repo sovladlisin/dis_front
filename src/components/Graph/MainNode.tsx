@@ -11,8 +11,9 @@ export default function MainNode(node: TNode) {
     const [showNodeMenu, setShowNodeMenu] = React.useState(false)
     var className = getNodeColorClass(node)
     className = node.data.is_highlighted ? className + ' highlighted-node' : className
-
     const locked = !node.data.labels.includes(node.data.ontology_uri)
+    className = locked ? className + ' locked_node' : className
+
 
     const hangleStyle = {
         background: 'white',
@@ -39,9 +40,9 @@ export default function MainNode(node: TNode) {
                         </p>
                         <div className='node-meta-buttons-container'>
 
-                            <button onClick={_ => setShowNodeMenu(true)}><i className='fas fa-ellipsis-v' /></button>
+                            <button onClick={_ => setShowNodeMenu(true)}><i className='fas fa-cog' /></button>
                             <button onClick={_ => node.data.onToggle(node.data.uri)}><i className='fas fa-eye' /></button>
-                            <button onClick={_ => node.data.onOpenEntity(node.data.ontology_uri, node.data.uri)}><i className='fas fa-list' /></button>
+                            <button onClick={_ => node.data.onOpenEntity(node.data.ontology_uri, node.data.uri)}><i className='fas fa-info' /></button>
                         </div>
                     </>}
 

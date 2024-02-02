@@ -1,5 +1,5 @@
-import { TNode } from "../actions/graph/types"
-import { ONTOLOGY_COLLECT_ENTITY, ONTOLOGY_COLLECT_ENTITY_LOADING, ONTOLOGY_CREATE_ONTOLOGY, ONTOLOGY_CREATE_PATTERN_ONTOLOGY, ONTOLOGY_CREATE_RESOURCE_ONTOLOGY, ONTOLOGY_DELETE_ONTOLOGY, ONTOLOGY_GET_ITEMS_BY_LABELS, ONTOLOGY_GET_ONTOLOGIES, ONTOLOGY_GET_PATTERN_ONTOLOGIES, ONTOLOGY_GET_RESOURCE_ONTOLOGIES, ONTOLOGY_OPEN_ENTITY, TOntologyDispatchTypes } from "../actions/ontology/types"
+import { TArc, TNode } from "../actions/graph/types"
+import { ONTOLOGY_COLLECT_ENTITY, ONTOLOGY_COLLECT_ENTITY_LOADING, ONTOLOGY_CREATE_ONTOLOGY, ONTOLOGY_CREATE_PATTERN_ONTOLOGY, ONTOLOGY_CREATE_RESOURCE_ONTOLOGY, ONTOLOGY_DELETE_ONTOLOGY, ONTOLOGY_GET_ITEMS_BY_LABELS, ONTOLOGY_GET_ONTOLOGIES, ONTOLOGY_GET_ONTOLOGY_TREE, ONTOLOGY_GET_PATTERN_ONTOLOGIES, ONTOLOGY_GET_RESOURCE_ONTOLOGIES, ONTOLOGY_OPEN_ENTITY, TOntologyDispatchTypes } from "../actions/ontology/types"
 
 interface IDefaultState {
     ontologies: TNode[],
@@ -8,6 +8,12 @@ interface IDefaultState {
     items_by_labels: TNode[],
     collected_entity: TNode,
     collected_entity_loading: boolean,
+
+    ontology_tree: {
+        nodes: TNode[],
+        arcs: TArc[],
+        ontology_uri: string
+    }
 
 
     opened_entity: { ontology_uri: string, uri: string }
@@ -21,11 +27,19 @@ const defaultState: IDefaultState = {
     collected_entity: null,
     collected_entity_loading: false,
 
+    ontology_tree: null,
+
     opened_entity: null
 }
 
 export const ontologyReducer = (state: IDefaultState = defaultState, action: TOntologyDispatchTypes) => {
     switch (action.type) {
+        case ONTOLOGY_GET_ONTOLOGY_TREE:
+            return {
+                ...state,
+                ontology_tree: action.payload
+            }
+
         case ONTOLOGY_DELETE_ONTOLOGY:
             return {
                 ...state,

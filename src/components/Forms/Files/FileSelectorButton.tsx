@@ -1,21 +1,25 @@
 import * as React from 'react';
 import { TFile } from '../../../actions/files/types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from '../../../store';
 import { useOnClickOutside } from '../../../utils';
+import { getFiles } from '../../../actions/files/files';
 
 interface IFileSelectorButtonProps {
     link: string,
-    onSelect: (file: TFile) => void
+    onSelect: (file: TFile) => void,
+    ontology_uri: string
 }
 
 const FileSelectorButton: React.FunctionComponent<IFileSelectorButtonProps> = (props) => {
-
+    const dispatch = useDispatch()
     const fileState = useSelector((state: RootStore) => state.files)
 
     const [search, setSearch] = React.useState('')
 
-
+    React.useEffect(() => {
+        dispatch(getFiles(props.ontology_uri))
+    }, [])
 
     const [selectedFile, setSelectedFile] = React.useState<TFile>(null)
 

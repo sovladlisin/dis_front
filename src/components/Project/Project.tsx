@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { TProject } from '../actions/projects/types';
-import ProjectHeader from './Project/ProjectHeader';
-import ProjectFooter from './Project/ProjectFooter';
+import { TProject } from '../../actions/projects/types';
+import ProjectHeader from './ProjectHeader';
+import ProjectFooter from './ProjectFooter';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootStore } from '../store';
-import { getOntologies, getResourceOntologies } from '../actions/ontology/ontology';
-import { getProject } from '../actions/projects/projects';
+import { RootStore } from '../../store';
+import { getOntologies, getResourceOntologies } from '../../actions/ontology/ontology';
+import { getProject } from '../../actions/projects/projects';
 
 
 interface IProjectProps {

@@ -5,8 +5,8 @@ body {
 }
 
 .m-background {
-    z-index: 9;
-    background: rgba(70, 70, 70, 0.71);
+    z-index: 99;
+    background: rgba(6, 3, 28, 0.82);
     position: fixed;
     top: 0;
     left: 0;
@@ -28,8 +28,25 @@ body {
     color: white;
 }
 
+.bg-yellow {
+    background: #e7b43c !important;
+    color: white;
+}
+
+.bg-grey {
+    background: rgb(131, 131, 131) !important;
+}
+
+.color-grey {
+    color: rgb(89, 89, 89) !important
+}
+
 .m-loading-new-block {
     margin: auto;
+}
+
+.bg-white {
+    background: white !important;
 }
 
 .color-red {

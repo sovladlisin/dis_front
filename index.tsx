@@ -12,7 +12,10 @@ import './src/static/css/graph.css'
 import './src/static/css/pattern.css'
 import './src/static/css/project.css'
 import './src/static/css/info.css'
-
+import './src/static/css/vkauth.css'
+import './src/static/css/main.css'
+// import './node_modules/react-grid-layout/css/styles.css'
+// import './node_modules/react-resizable/css/styles.css'
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 

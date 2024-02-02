@@ -27,6 +27,8 @@ export type TNode = {
     type: string,
     data: TNodeData,
     draggable: boolean,
+    ontology_tree_children?: TNode[]
+    ontology_tree_parents?: TNode[],
 }
 
 export type TNodeData = {
@@ -55,7 +57,23 @@ export type TNodeData = {
     attributes: TNode[],
     obj_attributes: TObjectTypeAttribute[],
 
+    // for arcs
+    end_node?: TNode,
+    start_node?: TNode,
 
+
+    file: TNodeFile,
+    connected_file: TNodeFile
+}
+
+export type TNodeFile = {
+    id: number,
+    url: string,
+    file_object: string,
+    name: string,
+    resource_type: string,
+    file_uri: string,
+    ontology_uri: string
 }
 
 export type TObjectTypeAttribute = {

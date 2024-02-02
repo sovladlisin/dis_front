@@ -6,11 +6,8 @@
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 9px gainsboro;
     width: 600px;
-    z-index: 99;
-    max-height: 650px;
-    overflow: auto;
+    z-index: 100;
 }
 
 .m-form-title {
@@ -26,6 +23,8 @@
     display: grid;
     grid-template-columns: auto auto;
     gap: 10px;
+    overflow: auto;
+    max-height: 500px;
 }
 
 .m-form-fields>label {
@@ -344,4 +343,59 @@ input {
 
 .m-form-select-list-with-search-search>input {
     padding: 0 0 0 30px;
+}
+
+.m-form-fields>textarea {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    font-size: 9pt;
+    padding: 0 5px;
+    background: #ececfd;
+    height: 200px;
+    line-height: 13pt;
+    padding: 10px;
+    resize: none;
+    white-space: break-spaces;
+}
+
+.m-form-block-types-container {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    display: inline-flex;
+}
+
+.m-form-block-types-container>button {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 14pt;
+}
+
+.m-form-fields>button {
+    width: max-content;
+    font-size: 16pt;
+}
+
+.form-main-item-selector-button-window-items-item-check>* {
+    float: left;
+    margin-right: 10px;
+}
+
+.form-main-item-selector-button-window-items-item-check>i {
+    color: #ececfd;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.form-main-item-selector-button-window-items-item-check>p {
+    height: 30px;
+    line-height: 30px;
+}
+
+.form-main-item-selector-button-window-items-item-check {
+    padding: 0 10px;
 }

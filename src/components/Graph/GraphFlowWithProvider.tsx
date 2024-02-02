@@ -2,12 +2,12 @@ import * as React from 'react';
 import ReactFlow, { useOnSelectionChange, ReactFlowProvider, useReactFlow, Controls, MiniMap, useKeyPress } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { useCallback } from 'react';
-import SearchWindow from './Graph/SearchWindow';
-import { calcNodeWidthForLayout, getNodeColor } from '../utils';
-import { TArc, TNode } from '../actions/graph/types';
+import SearchWindow from './SearchWindow';
+import { calcNodeWidthForLayout, getNodeColor } from '../../utils';
+import { TArc, TNode } from '../../actions/graph/types';
 import { useDispatch, useSelector } from 'react-redux';
-import { applyOntologyPattern, highlightNode, updateGraphSelection } from '../actions/graph/graph';
-import { RootStore } from '../store';
+import { applyOntologyPattern, highlightNode, updateGraphSelection } from '../../actions/graph/graph';
+import { RootStore } from '../../store';
 
 
 

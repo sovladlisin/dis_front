@@ -1,0 +1,303 @@
+.m-left-panel {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: auto;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    height: calc(100% - 20px);
+    width: 200px;
+}
+
+.m-left-panel>* {
+    width: 200px;
+    float: left;
+}
+
+.m-left-panel-auth {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid gainsboro;
+    width: 180px;
+}
+
+.m-left-panel-auth>img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.m-left-panel-auth>p {
+    height: 35px;
+    line-height: 35px;
+    font-size: 9pt;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+
+.m-left-panel>button {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+}
+
+.m-left-panel>button>i {
+    height: 35px;
+    line-height: 35px;
+    font-size: 9pt;
+    text-align: center;
+    width: 35px;
+}
+
+.m-left-panel>button>p {
+    height: 35px;
+    line-height: 35px;
+    font-size: 9pt;
+}
+
+.m-main-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: calc(100% - 230px);
+    border-radius: 5px;
+    overflow: auto;
+    height: calc(100% - 40px);
+    padding: 20px 0;
+}
+
+.m-title {
+    font-size: 20pt;
+    color: #5d5d5d;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.m-project-list>div {
+    width: calc(100% - 40px);
+    float: left;
+    background: white;
+    margin-bottom: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    height: 50px;
+}
+
+.m-project-controls {
+    float: right;
+    height: 50px;
+    display: inline-flex;
+}
+
+.m-project-list>div>p {
+    height: 50px;
+    line-height: 50px;
+    color: #444;
+    font-weight: bold;
+    width: 60%;
+    float: left;
+}
+
+.m-project-controls>* {
+    display: block;
+    float: left;
+    margin: auto 0 auto 10px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 10pt;
+}
+
+.m-list-open {
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+
+.m-project-controls>button {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+}
+
+.m-left-panel-auth>* {
+    float: left;
+}
+
+.m-left-panel-auth>button {
+    float: right;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 13pt;
+}
+
+.landing-main-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+}
+
+.landing-main-window>p {
+    font-weight: bold;
+    font-size: 19pt;
+    color: #717171;
+    height: 50px;
+    margin-bottom: 25px;
+}
+
+.m-ontology-list-item {
+    width: calc(100% - 40px);
+    float: left;
+    background: white;
+    margin-bottom: 10px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+.m-ontology-list-logo-container {
+    display: inline-flex;
+    border-bottom: 1px solid gainsboro;
+    width: 100%;
+    height: 50px;
+}
+
+.m-ontology-list-logo-container>i {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 40px;
+    float: left;
+    font-size: 15pt;
+}
+
+.m-ontology-list-logo-container>p {
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    color: #585858;
+    font-size: 16pt;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.m-ontology-list-description {
+    font-size: 10pt;
+    line-height: 12pt;
+    white-space: pre-line;
+    margin: 20px 0;
+    color: #464646;
+}
+
+.m-ontology-list-controls>* {
+    display: grid;
+    float: left;
+    margin-right: 10px;
+    line-height: 30px;
+    height: 30px;
+    padding: 0 10px 0 0;
+    font-size: 9pt;
+    border-radius: 5px;
+    grid-template-columns: auto auto;
+    margin-top: 10px;
+}
+
+.m-ontology-list-controls i {
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+
+.m-list-add {
+    width: calc(100% - 0px);
+    float: left;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    height: 90px;
+    border: 1px solid #979797;
+    color: #979797;
+}
+
+.m-ontology-tree-right {
+    position: relative;
+    width: 100%;
+    margin: 10px;
+    height: calc(100% - 20px);
+    overflow: auto;
+    border-radius: 10px;
+}
+
+.m-ontology-tree-right>.m-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
+}
+
+.m-ontology-tree {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+}
+
+.m-ontology-tree-left {
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+    height: calc(100% - 20px);
+    overflow: auto;
+}
+
+.m-ontology-tree-section-title {
+    height: 40px;
+}
+
+.m-ontology-tree-section-title>p {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    float: left;
+    cursor: pointer;
+}
+
+.m-ontology-tree-section-title-controls {
+    float: left;
+}
+
+.m-ontology-tree-section-title-controls>button {
+    float: left;
+    height: 40px;
+    width: 40px;
+}
+
+.m-ontology-tree-section-title-controls>button>i {
+    line-height: 40px;
+    font-size: 12pt;
+}
+
+.m-ontology-tree-section-title>p:hover {
+    background: gainsboro;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.m-ontology-tree-section-title-controls>button:hover {
+    background: #5f9dff;
+    color: white;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.m-ontology-tree-section {
+    border-left: 1px solid #c4c4c4;
+}

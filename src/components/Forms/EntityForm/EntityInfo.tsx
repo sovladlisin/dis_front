@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TNode } from '../actions/graph/types';
-import { collectEntity, openEntity } from '../actions/ontology/ontology';
-import { RootStore } from '../store';
-import { CLASS, COMMENT, getNodeLabel, LABEL, OBJECT, useOnClickOutside } from '../utils';
-import ItemSelectorButton from './Forms/ItemSelectorButton';
-import Loading from './Loading';
+import { TNode } from '../../../actions/graph/types';
+import { collectEntity, openEntity } from '../../../actions/ontology/ontology';
+import { RootStore } from '../../../store';
+import { CLASS, COMMENT, getNodeLabel, LABEL, OBJECT, renderEntityMedia, useOnClickOutside } from '../../../utils';
+import ItemSelectorButton from '../ItemSelectorButton';
+import Loading from '../../Loading';
 
 interface IEntityInfoProps {
 }
@@ -40,6 +40,7 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
             // const isFile = att.data[LABEL].includes('File@en')
             return <>
                 <label>{name}</label>
+                <p>{node.data.params_values[att.data.uri]}</p>
 
                 {/* {isFile && <span>File</span>}
                 {!isFile && <label>{node.data.params_values[uri]}</label>} */}
@@ -73,6 +74,9 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
         dispatch(openEntity(null))
     }
 
+
+
+
     const ref = React.useRef()
     useOnClickOutside(ref, () => close())
 
@@ -83,27 +87,34 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
     </>
     if (!node) return <></>
     return <>
+        <div className='m-background'></div>
+        <div className='m-entity-info-container' >
+            <div className='m-entity-info' ref={ref}>
+                {(node.data.file || node.data.connected_file) && <>
+                    <div className='m-entity-info-media'>
+                        {renderEntityMedia(node)}
+                    </div>
+                </>}
 
-        <div className='m-entity-info' ref={ref}>
+                <p className='m-entity-title'>{getTitle()}</p>
 
-            <p className='m-entity-title'>{getTitle()}</p>
-
-            <div className='m-entity-fields'>
-                <label>Название</label>
-                <div className="entity-label-container">
-                    {node.data[LABEL]?.map(l => {
-                        return <p>{l.split('@')[0]}<span>{l.split('@')[1]}</span></p>
-                    })}
-                </div>
-                <label>Описание</label>
-                <p>{node.data.params_values[COMMENT]}</p>
-            </div>
-
-            <div className='m-entity-attributes'>
                 <div className='m-entity-fields'>
-                    {renderAttributes()}
-                    {renderObjectAttributes(1)}
-                    {renderObjectAttributes(0)}
+                    <label>Название</label>
+                    <div className="entity-label-container">
+                        {node.data[LABEL]?.map(l => {
+                            return <p>{l.split('@')[0]}<span>{l.split('@')[1]}</span></p>
+                        })}
+                    </div>
+                    <label>Описание</label>
+                    <p>{node.data.params_values[COMMENT]}</p>
+                </div>
+
+                <div className='m-entity-attributes'>
+                    <div className='m-entity-fields'>
+                        {renderAttributes()}
+                        {renderObjectAttributes(1)}
+                        {renderObjectAttributes(0)}
+                    </div>
                 </div>
             </div>
         </div>

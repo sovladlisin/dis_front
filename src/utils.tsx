@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { MarkerType } from "reactflow"
 import { TAlert } from "./actions/alerts/types"
-import { TArc, TNode, TNodeData, TPattern, TPatternNode } from "./actions/graph/types"
+import { TArc, TNode, TNodeData, TNodeFile, TPattern, TPatternNode } from "./actions/graph/types"
 import { TSettings } from "./actions/settings/types"
 // import { TClass, TConnectedVisualItem, TObjectExtended } from "./actions/ontology/classes/types"
 export const HOST = window.location.host.includes('local') ? "http://" + window.location.host + '/' : "https://" + window.location.host + '/'
 
-export const SERVER_URL = window.location.host.includes('local') ? 'http://127.0.0.1:8000/api' : 'https://infra.iis.nsk.su/neo_graph_server/api'
+export const SERVER_URL = window.location.host.includes('local') ? 'http://127.0.0.1:8000/' : 'https://infra.iis.nsk.su/neo_graph_server/'
 export const SERVER_URL_FILES = window.location.host.includes('local') ? 'http://127.0.0.1:8000' : 'https://infra.iis.nsk.su/neo_graph_server'
 
 
@@ -53,6 +53,28 @@ export const makeId = (length: number) => {
             charactersLength));
     }
     return result;
+}
+
+
+export const renderEntityMedia = (f: TNode) => {
+    var local_file: TNodeFile = null
+    local_file = f.data.file ? f.data.file : f.data.connected_file
+    if (local_file === null) return <></>;
+
+    switch (local_file.resource_type) {
+        case 'jpeg' || 'png' || 'webp' || 'jpg':
+            return <img src={local_file.file_object} />
+
+        default:
+            return null
+    }
+}
+
+export const checkEntityMedia = (f: TNode) => {
+    var local_file: TNodeFile = null
+    local_file = f.data.file ? f.data.file : f.data.connected_file
+    if (local_file === null) return false;
+    return true
 }
 
 // export const getImage = (node: TObjectExtended): string => {

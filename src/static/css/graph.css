@@ -4,7 +4,7 @@
     right: 20px;
     display: grid;
     justify-items: right;
-    z-index: 99;
+    z-index: 9;
     gap: 5px;
 }
 
@@ -30,7 +30,7 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    z-index: 99;
+    z-index: 9;
 }
 
 .graph-flow-controls>button {
@@ -123,51 +123,13 @@
     color: white;
 }
 
-.home-ontology-list {
-    width: 1200px;
-    margin: 20px auto 30px auto;
-    border: 1px solid gainsboro;
-    padding: 20px;
-    border-radius: 15px;
-    display: inline-flex;
-}
 
-.home-ontology-list>div {
-    /*! height: 100px; */
-    background: white;
-    border-radius: 15px;
-    float: left;
-    margin-right: 15px;
-    font-size: 10pt;
-    width: 200px;
-    box-shadow: 0 0 6px gainsboro;
-    padding: 10px 0;
-}
 
-.home-ontology-list>button {
-    width: 200px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 0 6px gainsboro;
-    display: block;
-    font-size: 29pt;
-    color: gainsboro;
-    float: left;
-    height: inherit;
-}
 
-.home-title {
-    width: 1240px;
-    margin: 20px auto 0px auto;
-    font-size: 26pt;
-    color: #444;
-}
 
-.home-ontology-list p {
-    margin: 10px 20px;
-    font-weight: bold;
-    color: #515151;
-}
+
+
+
 
 
 
@@ -341,33 +303,6 @@
     font-size: 7pt;
 }
 
-.home-ontology-list-open {
-    display: block;
-    margin: 10px 20px 5px 20px;
-    background: #5f9dff;
-    color: white;
-    height: 25px;
-    border-radius: 25px;
-    padding: 0 10px;
-    width: max-content;
-    line-height: 25px;
-    font-size: 8pt;
-}
-
-.home-ontology-list-expand {
-    display: block;
-    margin: 0px 20px 10px 20px;
-    background: #ff7171;
-    color: white;
-    height: 25px;
-    border-radius: 25px;
-    padding: 0 10px;
-    width: max-content;
-    line-height: 25px;
-    font-size: 8pt;
-}
-
-.home-container {
-    width: 1240px;
-    margin: 50px auto;
+.locked_node {
+    opacity: 0.5 !important;
 }

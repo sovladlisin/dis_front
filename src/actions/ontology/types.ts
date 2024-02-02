@@ -1,8 +1,11 @@
-import { TNode } from "../graph/types"
+import { TArc, TNode } from "../graph/types"
 
 export const ONTOLOGY_GET_ONTOLOGIES = 'ONTOLOGY_GET_ONTOLOGIES'
 export const ONTOLOGY_DELETE_ONTOLOGY = 'ONTOLOGY_DELETE_ONTOLOGY'
 export const ONTOLOGY_CREATE_ONTOLOGY = 'ONTOLOGY_CREATE_ONTOLOGY'
+
+export const ONTOLOGY_GET_ONTOLOGY_TREE = 'ONTOLOGY_GET_ONTOLOGY_TREE'
+
 
 export const ONTOLOGY_GET_RESOURCE_ONTOLOGIES = 'ONTOLOGY_GET_RESOURCE_ONTOLOGIES'
 export const ONTOLOGY_CREATE_RESOURCE_ONTOLOGY = 'ONTOLOGY_CREATE_RESOURCE_ONTOLOGY'
@@ -52,4 +55,9 @@ interface ILoading {
     payload: boolean
 }
 
-export type TOntologyDispatchTypes = IDeleteOntology | IGetOntologies | ICreateOntology | IGetItemsByLabels | ICollectEntity | ILoading | IOpenEntity
+interface IGetOntologyTree {
+    type: typeof ONTOLOGY_GET_ONTOLOGY_TREE,
+    payload: { nodes: TNode[], arcs: TArc[], ontology_uri: string }
+}
+
+export type TOntologyDispatchTypes = IGetOntologyTree | IDeleteOntology | IGetOntologies | ICreateOntology | IGetItemsByLabels | ICollectEntity | ILoading | IOpenEntity

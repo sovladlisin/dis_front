@@ -14,7 +14,7 @@ export const getGraph = (uri: string) => (dispatch: Dispatch<TGraphDispatchTypes
 
     const params = withToken({ uri })
 
-    axios.get(SERVER_URL + '/getGraph', params).then(res => {
+    axios.get(SERVER_URL + 'api/getGraph', params).then(res => {
         dispatch({
             type: GRAPH_GET_GRAPH,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs, arc_names: res.data.arc_names }
@@ -39,7 +39,7 @@ export const applyOntologyPattern = (ontology_uri: string, origin_ontology_uri: 
 
     const params = withToken({})
     const body = JSON.stringify({ ontology_uri, origin_ontology_uri })
-    axios.post(SERVER_URL + '/applyOntologyPattern', body, params).then(res => {
+    axios.post(SERVER_URL + 'api/applyOntologyPattern', body, params).then(res => {
         dispatch({
             type: GRAPH_GET_GRAPH,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs, arc_names: res.data.arc_names }
@@ -58,7 +58,7 @@ export const applyOntologyPattern = (ontology_uri: string, origin_ontology_uri: 
 
 export const createClass = (ontology_uri: string, title: string[], comment: string, parent_uri?: string) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const body = JSON.stringify({ ontology_uri, title, comment, parent_uri })
-    axios.post(SERVER_URL + '/createClass', body).then(res => {
+    axios.post(SERVER_URL + 'api/createClass', body).then(res => {
         dispatch({
             type: GRAPH_CREATE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -70,7 +70,7 @@ export const createClass = (ontology_uri: string, title: string[], comment: stri
 
 export const createObject = (ontology_uri: string, title: string[], comment: string, class_uri: string) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const body = JSON.stringify({ ontology_uri, title, comment, class_uri })
-    axios.post(SERVER_URL + '/createObject', body).then(res => {
+    axios.post(SERVER_URL + 'api/createObject', body).then(res => {
         dispatch({
             type: GRAPH_CREATE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -82,7 +82,7 @@ export const createObject = (ontology_uri: string, title: string[], comment: str
 
 export const applyPattern = (pattern: TPattern) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const body = JSON.stringify({ pattern })
-    axios.post(SERVER_URL + '/applyPattern', body).then(res => {
+    axios.post(SERVER_URL + 'api/applyPattern', body).then(res => {
         dispatch({
             type: GRAPH_CREATE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -94,7 +94,7 @@ export const applyPattern = (pattern: TPattern) => (dispatch: Dispatch<TGraphDis
 
 export const collectPatterns = (patterns: TPattern[]) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const body = JSON.stringify({ patterns })
-    axios.post(SERVER_URL + '/collectPatterns', body).then(res => {
+    axios.post(SERVER_URL + 'api/collectPatterns', body).then(res => {
         console.log('taht', res.data)
         dispatch({
             type: GRAPH_SET_PATTERNS,
@@ -107,7 +107,7 @@ export const collectPatterns = (patterns: TPattern[]) => (dispatch: Dispatch<TGr
 
 export const addClassAttribute = (ontology_uri: string, uri: string, label: string[]) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const body = JSON.stringify({ ontology_uri, uri, label })
-    axios.post(SERVER_URL + '/addClassAttribute', body).then(res => {
+    axios.post(SERVER_URL + 'api/addClassAttribute', body).then(res => {
         dispatch({
             type: GRAPH_CREATE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -118,7 +118,7 @@ export const addClassAttribute = (ontology_uri: string, uri: string, label: stri
 }
 export const addClassObjectAttribute = (ontology_uri: string, uri: string, label: string[], range_uri: string) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const body = JSON.stringify({ ontology_uri, uri, label, range_uri })
-    axios.post(SERVER_URL + '/addClassObjectAttribute', body).then(res => {
+    axios.post(SERVER_URL + 'api/addClassObjectAttribute', body).then(res => {
         dispatch({
             type: GRAPH_CREATE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -131,7 +131,7 @@ export const addClassObjectAttribute = (ontology_uri: string, uri: string, label
 export const updateEntity = (ontology_uri: string, uri: string, params: any, obj_params: any) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     console.log(obj_params)
     const body = JSON.stringify({ ontology_uri, uri, params, obj_params })
-    axios.post(SERVER_URL + '/updateEntity', body).then(res => {
+    axios.post(SERVER_URL + 'api/updateEntity', body).then(res => {
         dispatch({
             type: GRAPH_UPDATE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -143,7 +143,7 @@ export const updateEntity = (ontology_uri: string, uri: string, params: any, obj
 
 export const deleteEntity = (ontology_uri: string, uri: string) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const params = withToken({ ontology_uri, uri })
-    axios.delete(SERVER_URL + '/deleteEntity', params).then(res => {
+    axios.delete(SERVER_URL + 'api/deleteEntity', params).then(res => {
         dispatch({
             type: GRAPH_REMOVE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -155,7 +155,7 @@ export const deleteEntity = (ontology_uri: string, uri: string) => (dispatch: Di
 
 export const deleteRelation = (ontology_uri: string, id: number) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const params = withToken({ ontology_uri, id })
-    axios.delete(SERVER_URL + '/deleteRelation', params).then(res => {
+    axios.delete(SERVER_URL + 'api/deleteRelation', params).then(res => {
         dispatch({
             type: GRAPH_REMOVE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -167,7 +167,7 @@ export const deleteRelation = (ontology_uri: string, id: number) => (dispatch: D
 
 export const getClassObjects = (ontology_uri: string, class_uri: string) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const params = withToken({ ontology_uri, class_uri })
-    axios.delete(SERVER_URL + '/getClassObjects', params).then(res => {
+    axios.delete(SERVER_URL + 'api/getClassObjects', params).then(res => {
         dispatch({
             type: GRAPH_REMOVE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -207,7 +207,7 @@ export const highlightNode = (uri: string) => (dispatch: Dispatch<TGraphDispatch
 
 export const updateEntityFile = (ontology_uri: string, uri: string, property_uri: any, file_id: number) => (dispatch: Dispatch<TGraphDispatchTypes | TFileDispatchTypes>) => {
     const body = JSON.stringify({ ontology_uri, uri, property_uri, file_id })
-    axios.post(SERVER_URL + '/updateEntityFile', body).then(res => {
+    axios.post(SERVER_URL + 'api/updateEntityFile', body).then(res => {
         dispatch({
             type: GRAPH_UPDATE_NODES,
             payload: { nodes: res.data.nodes, arcs: res.data.arcs }
@@ -237,7 +237,7 @@ export const updateGraphSelection = (nodes: TNode[], arcs: TArc[]) => (dispatch:
 export const createRelation = (source: string, target: string, ontology_uri: string) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
     const body = JSON.stringify({ ontology_uri, target, source })
 
-    axios.post(SERVER_URL + '/createRelation', body).then(res => {
+    axios.post(SERVER_URL + 'api/createRelation', body).then(res => {
 
 
     })

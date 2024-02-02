@@ -1,16 +1,7 @@
 .m-entity-info {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 999;
-    background: white;
-    width: 500px;
     overflow: auto;
-    height: calc(100% - 20px);
-    padding: 0 10px;
-    border-radius: 15px;
-    box-shadow: 0 0 3px #a8a8a8;
-    overflow: auto;
+    height: 100%;
+    padding: 0 15px;
 }
 
 .m-entity-title {
@@ -24,7 +15,7 @@
 .m-entity-fields {
     display: grid;
     grid-template-columns: 100px auto;
-    gap: 10px;
+    gap: 15px 10px;
     justify-content: left;
 }
 
@@ -64,4 +55,24 @@
 .entity-label-container>p {
     font-size: 10pt;
     font-weight: bold;
+}
+
+.m-entity-info-media>img {
+    width: calc(100% - 50px);
+    margin: 10px auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.m-entity-info-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    width: 500px;
+    height: calc(100% - 60px);
+    padding: 20px 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 3px #a8a8a8;
+    background: white;
 }

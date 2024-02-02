@@ -1,18 +1,22 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Graph from './components/Graph';
-import Home from './components/Home';
-import Project from './components/Project';
+
+import { useSelector } from 'react-redux';
+import { RootStore } from './store';
+import Login from './components/Auth/Login';
+import EntityInfo from './components/Forms/EntityForm/EntityInfo';
+import GraphLinked from './components/Graph/GraphLinked';
+import Landing from './components/Landing';
+import Project from './components/Project/Project';
+import ProjectCustomPage from './components/Project/ProjectCustomPage';
+import ProjectFiles from './components/Project/ProjectFiles';
 import ProjectHome from './components/Project/ProjectHome';
 import ProjectOntologies from './components/Project/ProjectOntologies';
 import ProjectResources from './components/Project/ProjectResources';
-import GraphLinked from './components/GraphLinked';
-import ProjectCustomPage from './components/Project/ProjectCustomPage';
-import { useSelector } from 'react-redux';
-import { RootStore } from './store';
-import EntityInfo from './components/EntityInfo';
-import ProjectFiles from './components/Project/ProjectFiles';
-import DDD from './components/DDD';
+import Cabinet from './components/Cabinet';
+import OntologyTree from './components/Tree/OntologyTree';
+import OntologyTreePage from './components/Tree/OntologyTreePage';
+import ProjectLearn from './components/Project/ProjectLearn';
 
 interface IAppProps {
 }
@@ -26,13 +30,23 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
     <Switch>
       <Route path="/project/:id/home" render={(props) => <Project slot={ProjectHome} {...props} />} />
       <Route path="/project/:id/ontologies" render={(props) => <Project slot={ProjectOntologies} {...props} />} />
+      <Route path="/project/:id/learn" render={(props) => <Project slot={ProjectLearn} {...props} />} />
       <Route path="/project/:id/resources" render={(props) => <Project slot={ProjectResources} {...props} />} />
       <Route path="/project/:id/files" render={(props) => <Project slot={ProjectFiles} {...props} />} />
-      <Route path="/project/:id/customPage/:uri" render={(props) => <Project slot={ProjectCustomPage} {...props} />} />
+      <Route path="/project/:id/customPage/:id" render={(props) => <Project slot={ProjectCustomPage} {...props} />} />
       <Route path="/graph/:uri" component={GraphLinked} />
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/" component={Home} />
-      <Route exact path="/ddd" component={DDD} />
+
+
+
+      <Route exact path="/cabinet" component={Cabinet} />
+
+      <Route path="/ontology/tree/:uri" component={OntologyTreePage} />
+
+
+
+
+      <Route exact path="/" component={Landing} />
+      <Route exact path="/login" component={Login} />
 
 
 

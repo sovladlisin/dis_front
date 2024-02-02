@@ -32,7 +32,8 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
     React.useEffect(() => {
         if (!ontologyState.collected_entity) return;
         if (ontologyState.collected_entity.data.uri != props.uri) return;
-        setIsEdit(!ontologyState.collected_entity.data.labels.includes(CLASS))
+        setIsObject(!ontologyState.collected_entity.data.labels.includes(CLASS))
+        console.log('collected_entity', ontologyState.collected_entity)
         setNode(ontologyState.collected_entity)
     }, [ontologyState.collected_entity])
 
@@ -41,11 +42,12 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
     const setNodeParam = (param: string, value: string | string[]) => {
         setNode({ ...node, data: { ...node.data, params_values: { ...node.data.params_values, [param]: value } } })
     }
-    const setNodeObjectParam = (attr: TObjectTypeAttribute) => {
+    const setNodeObjectParam = (attr: TObjectTypeAttribute, direction: number) => {
+        console.log(direction, 'setNodeObjectParam')
         setNode({
             ...node, data: {
                 ...node.data, obj_attributes: node.data.obj_attributes.map(oa => {
-                    if (oa.field.data.uri === attr.field.data.uri)
+                    if (oa.field.data.uri === attr.field.data.uri && oa.direction === direction)
                         return attr
                     return oa
                 })
@@ -65,7 +67,7 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
     }
 
 
-    const [isEdit, setIsEdit] = React.useState(false)
+    const [isObject, setIsObject] = React.useState(false)
 
     const renderAttributes = () => {
         return node.data.attributes.map(att => {
@@ -76,14 +78,14 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
             const isFile = att.data[LABEL].includes('File@en')
             return <>
                 {!isFile && <label>{name}</label>}
-                {isEdit && <>
-                    {isFile && <FileSelectorButton link={node.data.params_values[uri]} onSelect={(file: TFile) => {
+                {isObject && <>
+                    {isFile && <FileSelectorButton ontology_uri={node.data.ontology_uri} link={node.data.params_values[uri]} onSelect={(file: TFile) => {
                         dispatch(updateEntityFile(node.data.ontology_uri, node.data.uri, uri, file.id))
                         // setNodeParam(uri, file.link)
                     }} />}
                     {!isFile && <input value={node.data.params_values[uri]} onChange={e => setNodeParam(uri, e.target.value)}></input>}
                 </>}
-                {!isEdit && <label className='form-class-label-value'>Строка</label>}
+                {!isObject && <label className='form-class-label-value'>Строка</label>}
             </>
         })
 
@@ -91,16 +93,17 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
 
     const renderObjectAttributes = (direction: number) => {
         return node.data.obj_attributes.filter(att => att.direction === direction).map(att => {
+            console.log(direction)
             return <>
-                {isEdit &&
+                {isObject &&
                     <ItemSelectorButton
-                        onChange={val => setNodeObjectParam({ ...att, value: val })}
+                        onChange={val => setNodeObjectParam({ ...att, value: val }, direction)}
                         title={getNodeLabel(att.field)}
                         labels={[OBJECT, att.range.data.uri]}
                         selected={att.value}
                         ontology_uri={props.ontology_uri} />
                 }
-                {!isEdit &&
+                {!isObject &&
                     <>
                         <label>{getNodeLabel(att.field)}</label>
                         <label className='form-class-label-value'>{getNodeLabel(att.range)}</label>
@@ -123,6 +126,7 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
             return 'Класс: ' + name
         if (node.data.labels.includes(OBJECT))
             return 'Объект: ' + name
+        return name
     }
 
 
@@ -143,7 +147,7 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
             <div className='m-form-fields'>
                 <LabelForm label={node.data.params_values[LABEL]} onChange={label => setNodeParam(LABEL, label)} />
                 <label>Описание</label>
-                <input placeholder='...' value={node.data.params_values[COMMENT]} onChange={e => setNodeParam(COMMENT, e.target.value)}></input>
+                <textarea placeholder='...' value={node.data.params_values[COMMENT]} onChange={e => setNodeParam(COMMENT, e.target.value)}></textarea>
             </div>
 
             <div className='m-form-entity-form-section'>
@@ -162,7 +166,7 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
             <div className='m-form-entity-form-section'>
                 <div className='m-form-entity-form-section-header'>
                     <div className='m-form-entity-form-section-header-title'>
-                        <p>Атрибуты</p>
+                        <p>Отношения</p>
                         <div className='m-form-entity-form-section-header-title-description'>
                             <span className='m-form-entity-form-section-header-title-description-bubble'>{getFormTitle()}</span>
                             <i className='fas fa-long-arrow-alt-right'></i>
@@ -176,20 +180,19 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
                 </div>
             </div>
 
-            <div className='m-form-entity-form-section'>
+            {/* <div className='m-form-entity-form-section'>
                 <div className='m-form-entity-form-section-header'>
-                    <p>Атрибуты</p>
+                    <p>Отношения</p>
                     <div className='m-form-entity-form-section-header-title-description'>
                         <span className='m-form-entity-form-section-header-title-description-bubble'>Узел</span>
                         <i className='fas fa-long-arrow-alt-right'></i>
                         <span className='m-form-entity-form-section-header-title-description-bubble'>{getFormTitle()}</span>
                     </div>
-                    {/* <button onClick={_ => setAddingClassObjectAttribute(0)}><i className='fas fa-plus'></i></button> */}
                 </div>
                 <div className='m-form-entity-form-section-fields'>
                     {renderObjectAttributes(0)}
                 </div>
-            </div>
+            </div> */}
 
             <div className='m-form-controls'>
                 <button className='bg-blue' onClick={onSave}>Сохранить</button>
