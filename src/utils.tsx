@@ -6,8 +6,8 @@ import { TSettings } from "./actions/settings/types"
 // import { TClass, TConnectedVisualItem, TObjectExtended } from "./actions/ontology/classes/types"
 export const HOST = window.location.host.includes('local') ? "http://" + window.location.host + '/' : "https://" + window.location.host + '/'
 
-export const SERVER_URL = window.location.host.includes('local') ? 'http://127.0.0.1:8000/' : 'https://infra.iis.nsk.su/neo_graph_server/'
-export const SERVER_URL_FILES = window.location.host.includes('local') ? 'http://127.0.0.1:8000' : 'https://infra.iis.nsk.su/neo_graph_server'
+export const SERVER_URL = 'https://infra.iis.nsk.su/neo_graph_server/'
+export const SERVER_URL_FILES = 'https://infra.iis.nsk.su/neo_graph_server'
 
 
 
