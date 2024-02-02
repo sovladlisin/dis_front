@@ -29,7 +29,7 @@ const ResOntologiesPage: React.FunctionComponent<IResOntologiesPageProps> = (pro
         <h1 className='m-title'>Онтологии ресурсов</h1>
         <div className='m-ontology-list'>
             <button className='m-list-add' onClick={_ => setCreateOntology(2)}><i className='fas fa-plus'></i></button>
-            {ontologyState.resource_ontologies.map(o => {
+            {ontologyState.resource_ontologies instanceof Array && ontologyState.resource_ontologies.map(o => {
                 return <>
                     <div className='m-ontology-list-item'>
                         <div className='m-ontology-list-logo-container'>

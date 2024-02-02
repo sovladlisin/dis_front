@@ -10,16 +10,13 @@ interface IProjectsPageProps {
 const ProjectsPage: React.FunctionComponent<IProjectsPageProps> = (props) => {
     const dispatch = useDispatch()
     const projectState = useSelector((state: RootStore) => state.projects)
-    React.useEffect(() => {
-        dispatch(getProjects())
-    }, [])
     const [projectFormWindowNew, setProjectFormWindowNew] = React.useState(false)
 
     return <>
         <h1 className='m-title'>Проекты</h1>
         <div className='m-project-list'>
             <button className='m-list-add' onClick={_ => { setProjectFormWindowNew(true); }}><i className='fas fa-plus'></i></button>
-            {projectState.projects.map(p => {
+            {projectState.projects instanceof Array && projectState.projects.map(p => {
                 return <>
                     <div className=''>
                         <p>{p.name}</p>

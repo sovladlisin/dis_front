@@ -27,7 +27,7 @@ const PatternsPage: React.FunctionComponent<IPatternsPageProps> = (props) => {
 
         <div className='m-ontology-list'>
             <button className='m-list-add' onClick={_ => setCreateOntology(3)}><i className='fas fa-plus'></i></button>
-            {ontologyState.pattern_ontologies.map(o => {
+            {ontologyState.pattern_ontologies instanceof Array && ontologyState.pattern_ontologies.map(o => {
                 return <>
                     <div className='m-ontology-list-item'>
                         <div className='m-ontology-list-logo-container'>

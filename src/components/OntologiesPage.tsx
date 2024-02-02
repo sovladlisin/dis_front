@@ -27,7 +27,7 @@ const OntologiesPage: React.FunctionComponent<IOntologiesPageProps> = (props) =>
 
         <div className='m-ontology-list'>
             <button className='m-list-add' onClick={_ => setCreateOntology(1)}><i className='fas fa-plus'></i></button>
-            {ontologyState.ontologies.map(o => {
+            {ontologyState.ontologies instanceof Array && ontologyState.ontologies.map(o => {
                 return <>
                     <div className='m-ontology-list-item'>
                         <div className='m-ontology-list-logo-container'>
