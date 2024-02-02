@@ -15,7 +15,7 @@ interface IProjectProps {
 }
 
 const Project: React.FunctionComponent<IProjectProps> = (props) => {
-    const project_id: number = parseInt(window.location.href.split('project')[1].split('/')[1])
+    const project_id: number = parseInt(window.location.href.split('project/')[1].split('/')[0])
 
     const dispatch = useDispatch()
     const projectState = useSelector((state: RootStore) => state.projects)
