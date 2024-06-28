@@ -5,7 +5,7 @@ import { TNode } from '../../actions/graph/types';
 import { getItemsByLabels } from '../../actions/ontology/ontology';
 import { ONTOLOGY_GET_ITEMS_BY_LABELS } from '../../actions/ontology/types';
 import { RootStore } from '../../store';
-import { CLASS, getNodeLabel, readLabel, SERVER_URL } from '../../utils';
+import { CLASS, getNodeLabel, OBJECT_PROPERTY, readLabel, SERVER_URL } from '../../utils';
 import { withToken } from '../../actions/auth/auth';
 
 interface IItemSelectorButtonProps {
@@ -26,7 +26,7 @@ const ItemSelectorButton: React.FunctionComponent<IItemSelectorButtonProps> = (p
 
     const onLoad = async (class_uri: string) => {
 
-        if (props.labels.length === 1 && props.labels[0] === CLASS) {
+        if (props.labels.length === 1 && (props.labels[0] === CLASS || props.labels[0] === OBJECT_PROPERTY)) {
             const body = JSON.stringify({ ontology_uri: props.ontology_uri, labels: props.labels })
             console.log(body, "body")
 
