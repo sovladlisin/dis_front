@@ -1,5 +1,5 @@
 import { TNode } from "../actions/graph/types"
-import { PROJECTS_CREATE_PAGE, PROJECTS_CREATE_PAGE_BLOCK, PROJECTS_CREATE_PROJECT, PROJECTS_DELETE_PAGE, PROJECTS_DELETE_PAGE_BLOCK, PROJECTS_DELETE_PROJECT, PROJECTS_GET_CUSTOM_PAGE, PROJECTS_GET_PAGE, PROJECTS_GET_PROJECT, PROJECTS_GET_PROJECTS, PROJECTS_PAGE_LOADING, PROJECTS_UPDATE_PAGE, PROJECTS_UPDATE_PAGE_BLOCK, PROJECTS_UPDATE_PROJECT, PROJECT_GET_PROJECT_EMBEDDING, PROJECT_GET_PROJECT_MESSAGE, TPage, TPageBlock, TProject, TProjectDispatchTypes, TProjectEmbedding, TProjectMessage } from "../actions/projects/types"
+import { PROJECTS_CREATE_PAGE, PROJECTS_CREATE_PAGE_BLOCK, PROJECTS_CREATE_PROJECT, PROJECTS_DELETE_PAGE, PROJECTS_DELETE_PAGE_BLOCK, PROJECTS_DELETE_PROJECT, PROJECTS_GET_CUSTOM_PAGE, PROJECTS_GET_PAGE, PROJECTS_GET_PROJECT, PROJECTS_GET_PROJECTS, PROJECTS_PAGE_LOADING, PROJECTS_UPDATE_PAGE, PROJECTS_UPDATE_PAGE_BLOCK, PROJECTS_UPDATE_PROJECT, PROJECT_GET_PROJECT_EMBEDDING, PROJECT_GET_PROJECT_MESSAGE, PROJECT_SET_MEDIA_BLOCK, TPage, TPageBlock, TProject, TProjectDispatchTypes, TProjectEmbedding, TProjectMessage } from "../actions/projects/types"
 
 interface IDefaultState {
     projects: TProject[],
@@ -17,7 +17,10 @@ interface IDefaultState {
 
     project_embedding: TProjectEmbedding,
     new_project_message: TProjectMessage,
-    is_project_chat_loading: boolean
+    is_project_chat_loading: boolean,
+
+
+    media_node: TNode
 
 
 }
@@ -37,11 +40,18 @@ const defaultState: IDefaultState = {
 
     project_embedding: null,
     new_project_message: null,
-    is_project_chat_loading: false
+    is_project_chat_loading: false,
+
+    media_node: null
 }
 
 export const projectReducer = (state: IDefaultState = defaultState, action: TProjectDispatchTypes) => {
     switch (action.type) {
+        case PROJECT_SET_MEDIA_BLOCK:
+            return {
+                ...state,
+                media_node: action.payload
+            }
         case PROJECT_GET_PROJECT_MESSAGE:
             return {
                 ...state,

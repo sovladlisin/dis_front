@@ -5,7 +5,8 @@ export type TAccount = {
     id: number,
     vk_id: number,
     vk_name: string,
-    vk_avatar: string
+    vk_avatar: string,
+    token?: string
 }
 
 interface IAccount {

@@ -6,8 +6,10 @@ import { TSettings } from "./actions/settings/types"
 // import { TClass, TConnectedVisualItem, TObjectExtended } from "./actions/ontology/classes/types"
 export const HOST = window.location.host.includes('local') ? "http://" + window.location.host + '/' : "https://" + window.location.host + '/'
 
-export const SERVER_URL = 'https://infra.iis.nsk.su/neo_graph_server/'
-export const SERVER_URL_FILES = 'https://infra.iis.nsk.su/neo_graph_server'
+// export const SERVER_URL = 'https://infra.iis.nsk.su/neo_graph_server/'
+export const SERVER_URL = 'http://127.0.0.1:8000/'
+export const SERVER_URL_FILES = 'http://127.0.0.1:8000'
+// export const SERVER_URL_FILES = 'https://infra.iis.nsk.su/neo_graph_server'
 
 
 
@@ -63,8 +65,11 @@ export const renderEntityMedia = (f: TNode) => {
 
     switch (local_file.resource_type) {
         case 'jpeg' || 'png' || 'webp' || 'jpg':
-            return <img src={local_file.file_object} />
-
+            return <img src={'data:image/' + 'PNG' + ';base64,' + local_file.file_object} />
+        case 'txt':
+            return null
+            return <i className='fas fa-circle-notch color-blue'></i>
+            return 'data:image/' + 'PNG' + ';base64,' + local_file.file_object
         default:
             return null
     }
@@ -74,6 +79,10 @@ export const checkEntityMedia = (f: TNode) => {
     var local_file: TNodeFile = null
     local_file = f.data.file ? f.data.file : f.data.connected_file
     if (local_file === null) return false;
+    if (local_file.resource_type === 'txt') return false;
+    if (local_file.resource_type === 'mp4') return false;
+    if (local_file.resource_type === 'avi') return false;
+    if (local_file.resource_type === 'pdf') return false;
     return true
 }
 

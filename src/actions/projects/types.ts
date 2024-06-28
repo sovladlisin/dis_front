@@ -24,6 +24,9 @@ export const PROJECT_GET_PROJECT_EMBEDDING = 'PROJECT_GET_PROJECT_EMBEDDING'
 export const PROJECT_GET_PROJECT_MESSAGE = 'PROJECT_GET_PROJECT_MESSAGE'
 export const PROJECT_CHAT_LOADING = 'PROJECT_CHAT_LOADING'
 
+export const PROJECT_SET_MEDIA_BLOCK = 'PROJECT_SET_MEDIA_BLOCK'
+
+
 export const PageBlockTypes = {
     'text': 'Текст',
     'card_list': 'Мозайка',
@@ -161,6 +164,11 @@ interface IBlock {
     payload: TPageBlock
 }
 
+interface INode {
+    type: typeof PROJECT_SET_MEDIA_BLOCK
+    payload: TNode
+}
 
 
-export type TProjectDispatchTypes = IProjectIn | INumber | IProjectsIn | IGetCustomPage | IPage | IBlock | IBoolean | IProjectEmbedding | IProjectMessage
+
+export type TProjectDispatchTypes = INode | IProjectIn | INumber | IProjectsIn | IGetCustomPage | IPage | IBlock | IBoolean | IProjectEmbedding | IProjectMessage

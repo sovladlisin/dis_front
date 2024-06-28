@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { TPageBlock } from '../../../actions/projects/types';
-import { SERVER_URL, checkEntityMedia, getNodeLabel, renderEntityMedia } from '../../../utils';
+import { TPageBlock, TProject } from '../../../actions/projects/types';
+import { SERVER_URL, checkEntityMedia, encode, getNodeLabel, renderEntityMedia } from '../../../utils';
 import { useDispatch } from 'react-redux';
 import { openEntity } from '../../../actions/ontology/ontology';
 import axios from 'axios';
 import { TNode } from '../../../actions/graph/types';
-
+import { Link } from 'react-router-dom'
+import { setMediaBlock } from '../../../actions/projects/projects';
 interface IBlockBulletListProps {
     block: TPageBlock
-    devMode: boolean
+    devMode: boolean,
+    project: TProject
 
 }
 
@@ -53,6 +55,13 @@ const BlockBulletList: React.FunctionComponent<IBlockBulletListProps> = (props) 
                             <p>{getNodeLabel(node)}</p>
 
                             <div className='block-bullet-list-node-container-controls'>
+                                {node.data?.file?.resource_type === 'txt' && <>
+                                    <Link target='__blank' className='color-white bg-blue' to={'/project/' + props.project.id + '/textEditor/' + encode(node.data.uri)}><i className='fas fa-book-open'></i></Link>
+                                </>}
+                                {node.data?.file?.resource_type && <>
+                                    <button className='color-white bg-blue' onClick={_ => dispatch(setMediaBlock(node))} ><i className='fas fa-photo-video'></i></button>
+
+                                </>}
                                 <button className='color-white bg-blue' onClick={_ => dispatch(openEntity({ ontology_uri: node.data.ontology_uri, uri: node.data.uri }))} ><i className='fas fa-info'></i></button>
                             </div>
                         </div>

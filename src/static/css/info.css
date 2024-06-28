@@ -5,11 +5,11 @@
 }
 
 .m-entity-title {
-    height: 70px;
-    line-height: 70px;
-    font-size: 16pt;
+    line-height: 28px;
+    font-size: 13pt;
     font-weight: bold;
     color: #212121;
+    margin-bottom: 15px;
 }
 
 .m-entity-fields {
@@ -75,4 +75,55 @@
     border-radius: 15px;
     box-shadow: 0 0 3px #a8a8a8;
     background: white;
+}
+
+.m-entity-mentions-item {
+    height: 50px;
+}
+
+.m-entity-mentions-item>a {
+    float: left;
+    display: block;
+    height: 30px;
+    margin: 5px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+
+.m-entity-mentions-item>a>p {
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+    padding: 0 0 0 10px;
+}
+
+.m-entity-mentions-item>a>i {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 9pt;
+    padding: 0 10px 0 0;
+}
+
+.m-entity-mentions-item-position {
+    float: right;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.m-entity-mentions-item-position>p {
+    height: 30px;
+    line-height: 30px;
+    font-size: 11pt;
+    margin: 5px;
+}
+
+.m-entity-mentions-item-position>i {
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 5px;
 }

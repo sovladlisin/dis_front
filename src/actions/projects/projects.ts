@@ -2,8 +2,8 @@ import axios from "axios"
 import { title } from "process"
 import { Dispatch } from "react"
 import { SERVER_URL } from "../../utils"
-import { GRAPH_CREATE_NODES } from "../graph/types"
-import { PROJECTS_CREATE_PAGE, PROJECTS_CREATE_PAGE_BLOCK, PROJECTS_CREATE_PROJECT, PROJECTS_DELETE_PAGE, PROJECTS_DELETE_PAGE_BLOCK, PROJECTS_DELETE_PROJECT, PROJECTS_GET_CUSTOM_PAGE, PROJECTS_GET_PAGE, PROJECTS_GET_PROJECT, PROJECTS_GET_PROJECTS, PROJECTS_PAGE_LOADING, PROJECTS_UPDATE_PAGE, PROJECTS_UPDATE_PAGE_BLOCK, PROJECTS_UPDATE_PROJECT, PROJECT_CHAT_LOADING, PROJECT_GET_PROJECT_EMBEDDING, PROJECT_GET_PROJECT_MESSAGE, TPage, TPageBlock, TProjectDispatchTypes } from "./types"
+import { GRAPH_CREATE_NODES, TNode } from "../graph/types"
+import { PROJECTS_CREATE_PAGE, PROJECTS_CREATE_PAGE_BLOCK, PROJECTS_CREATE_PROJECT, PROJECTS_DELETE_PAGE, PROJECTS_DELETE_PAGE_BLOCK, PROJECTS_DELETE_PROJECT, PROJECTS_GET_CUSTOM_PAGE, PROJECTS_GET_PAGE, PROJECTS_GET_PROJECT, PROJECTS_GET_PROJECTS, PROJECTS_PAGE_LOADING, PROJECTS_UPDATE_PAGE, PROJECTS_UPDATE_PAGE_BLOCK, PROJECTS_UPDATE_PROJECT, PROJECT_CHAT_LOADING, PROJECT_GET_PROJECT_EMBEDDING, PROJECT_GET_PROJECT_MESSAGE, PROJECT_SET_MEDIA_BLOCK, TPage, TPageBlock, TProjectDispatchTypes } from "./types"
 import { withToken } from "../auth/auth"
 
 export const createProject = (name: string, ontologies_uris: string[], res_ontologies_uris: string) => (dispatch: Dispatch<TProjectDispatchTypes>) => {
@@ -226,5 +226,12 @@ export const getProjectMessage = (id: number, text: string) => (dispatch: Dispat
             type: PROJECT_CHAT_LOADING,
             payload: false
         })
+    })
+}
+
+export const setMediaBlock = (node: TNode) => (dispatch: Dispatch<TProjectDispatchTypes>) => {
+    dispatch({
+        type: PROJECT_SET_MEDIA_BLOCK,
+        payload: node
     })
 }

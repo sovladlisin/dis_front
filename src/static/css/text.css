@@ -1,0 +1,714 @@
+.ws-container {}
+
+.ws-title {
+    width: 1100px;
+    height: 50px;
+    line-height: 50px;
+    padding: 10px 0;
+    margin-top: 65px;
+}
+
+.ws-control-panel {
+    width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin: 10px 0;
+}
+
+.ws-control-panel button {
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #b1b1b1;
+    border-radius: 5px;
+    font-size: 9pt;
+}
+
+.ws-content {}
+
+.nav-bar {
+    height: 40px;
+    line-height: 30px;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+    border-top: 1px solid gainsboro;
+    padding: 20px 10px;
+    border-bottom: 1px solid gainsboro;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    width: 1420px;
+}
+
+.nav-bar>* {
+    line-height: 40px;
+    height: 40px;
+    font-size: 9pt;
+    text-align: right;
+    float: left;
+    width: auto;
+    border: 1px solid gray;
+}
+
+.main-line {
+    display: grid;
+    grid-template-columns: 30px 445px 445px 240px;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.main-line p {
+    line-height: 30px;
+    font-size: 9pt;
+    background: white;
+    display: inline-block;
+}
+
+.line-index {
+    text-align: center;
+}
+
+.ws-text-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.ws-text-note {
+    white-space: pre-wrap;
+}
+
+.ws-word {
+    padding: 0 5px;
+    position: relative;
+    display: block;
+    line-height: 30px;
+    height: 30px;
+    width: max-content;
+    float: left;
+}
+
+.ws-word:hover {
+    background: gainsboro;
+    cursor: pointer;
+}
+
+#ws-add-entity {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 12pt;
+    height: 50px;
+    width: 50px;
+    line-height: 30px;
+    background: #252854;
+    border-radius: 50px;
+    color: white;
+    font-size: 14pt;
+}
+
+.ws-ontology-list button {
+    height: 40px;
+    font-style: normal;
+    font-size: 10pt;
+    line-height: 24px;
+    padding: 0 10px;
+}
+
+.ws-ontology-list {
+    height: 40px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ws-markup-list {
+    display: inline-block;
+    width: 100%;
+}
+
+.ws-markup-list>* {
+    height: 40px;
+    line-height: 40px;
+    margin-right: 10px;
+    font-size: 9pt;
+    background: white;
+    color: black;
+    padding: 0 10px;
+    width: max-content;
+    float: left;
+}
+
+.ws-markup-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background: white;
+    box-shadow: 0 4px 0 gainsboro;
+    border-radius: 5px;
+}
+
+.ws-markup-form input {
+    width: 90%;
+    padding: 0 5%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+.ws-markup-form button {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 9pt;
+    margin: 10px 0 0 0;
+    background: #38c087;
+    border-radius: 5px;
+    color: white;
+}
+
+.ws-markup-list p {
+    display: inline-grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    cursor: pointer;
+    border: 1px solid gainsboro;
+    color: #aeaeae;
+    border-radius: 10px;
+}
+
+.ws-entity-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 0 0 4px 3px #dcdada;
+    padding: 25px;
+}
+
+.ws-entity-form-types {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow: hidden;
+    margin: 0 0 10px 0;
+    font-size: 12pt;
+}
+
+.ws-entity-form-types button {
+    line-height: 30px;
+    padding: 0 10px;
+    width: 100px;
+    height: 50px;
+}
+
+.ws-entity-form-params {
+    display: grid;
+    font-size: 9pt;
+    grid-template-columns: 1fr 3fr;
+    line-height: 30px;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#ws-entity-form-add {
+    width: 100%;
+    font-size: 12pt;
+    color: #3f3f3f;
+    height: 40px;
+    line-height: 30px;
+    margin: 10px 0 0 0;
+    border: 1px solid red;
+}
+
+.ws-node-label {
+    position: absolute;
+    top: -22px;
+    font-size: 7pt;
+    border-radius: 30px;
+    padding: 0 3px;
+    height: 14px;
+    line-height: 14px;
+    z-index: 5;
+    color: white;
+    display: inline-block;
+    left: 0;
+    width: max-content;
+}
+
+#ws-add-relation {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 12pt;
+    height: 50px;
+    width: 50px;
+    line-height: 30px;
+    background: #d12878;
+    border-radius: 50px;
+    color: white;
+    font-size: 14pt;
+}
+
+.ws-relation-window {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    line-height: 30px;
+    background: white;
+    padding: 20px;
+    font-size: 9pt;
+    box-shadow: 0 0px 6px 0 #adabab;
+    width: 370px;
+    border-radius: 10px;
+}
+
+.ws-relation-window-placeholder {
+    border: 1px solid #959595;
+    margin-bottom: 10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 11pt;
+    color: gainsboro;
+    border-radius: 10px;
+}
+
+.ws-relation-window button {
+    width: 100%;
+    color: #444;
+    height: 40px;
+    font-size: 11pt;
+    border-radius: 10px;
+}
+
+.ws-relation-window-placeholder span {
+    padding: 0 5px;
+}
+
+.ws-relation-window-entity-title {
+    width: max-content;
+    margin: 5px 5px 0 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 9pt;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    float: left;
+}
+
+.ws-relation-window-entity-pos {
+    margin: 0 10px;
+    padding: 0 5px;
+    font-size: 10pt;
+    float: right;
+    color: #525252;
+    font-weight: bold;
+}
+
+.ws-class-container {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translate(0%, -50%);
+    height: 600px;
+    overflow-y: auto;
+    z-index: 50;
+    width: 50%;
+}
+
+.ws-class-container-exit {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+}
+
+.ws-markup-list p button {
+    color: #727171;
+    margin: 0 7px;
+}
+
+.class-info-entities-container {
+    margin: 0 3%;
+}
+
+.text-line {
+    position: relative;
+    padding: 0 10px;
+}
+
+.text-line>button {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 30px;
+    line-height: 30px;
+    color: #f0f0f0;
+}
+
+.text-line>button:hover {
+    color: #252854;
+}
+
+.commentary-window {
+    position: absolute;
+    background: white;
+    box-shadow: 0 0px 3px 2px gainsboro;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 999;
+    right: 0;
+    bottom: 45px;
+    height: 300px;
+    width: 250px;
+}
+
+.commentary-window textarea {
+    width: 90%;
+    font-size: 9pt;
+    resize: none;
+    padding: 5%;
+    height: 230px;
+    border: 1px solid #525151;
+}
+
+.commentary-window button {
+    width: 100%;
+    height: 40px;
+    line-height: 30px;
+    color: #525151;
+    margin: 10px 0 0 0;
+    border: 1px solid #525151;
+}
+
+#save-comments {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    font-size: 9pt;
+    background: #2bb883;
+    color: white;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.workspace-return {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color: #848282;
+}
+
+.workspace-return>i {
+    margin-right: 10px;
+}
+
+.workspace-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24pt;
+    line-height: 52px;
+    margin: 20px 0;
+    color: #414140;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+    height: 60px;
+}
+
+.workspace-menu-outer {
+    position: relative;
+    height: 90px;
+}
+
+.workspace-menu-line {
+    position: absolute;
+    width: 300%;
+    left: 50%;
+    transform: translate(-50%);
+    background: white;
+    height: 70px;
+    box-shadow: 0 0px 4px gainsboro;
+}
+
+.workspace-menu-content {
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 1440px;
+}
+
+.workspace-menu-content>button {
+    height: 70px;
+
+    text-align: left;
+    padding: 0 20px;
+}
+
+.workspace-text-mode {
+    height: 40px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.workspace-text-mode>button {
+    height: 40px;
+    font-style: normal;
+    font-size: 10pt;
+    line-height: 24px;
+    padding: 0 10px;
+}
+
+.nav-bar>p {
+    border: none;
+    color: #323131;
+}
+
+.nav-bar>input {
+    width: 75px;
+    margin: 0 25px 0 10px;
+    text-align: center;
+}
+
+.text-create-new-relation {
+    float: right;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    text-align: center;
+    background: #f1eee8;
+    color: #666565;
+    font-size: 13pt;
+    line-height: 40px;
+    border: none;
+    margin-left: 15px;
+}
+
+.text-add-entity {
+    float: right;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    text-align: center;
+    background: #f1eee8;
+    color: #666565;
+    font-size: 13pt;
+    line-height: 40px;
+    border: none;
+}
+
+.ws-ontology-list-selected {
+    background: gainsboro;
+}
+
+.ws-markup-list-selected {
+    border-color: black !important;
+    color: black !important;
+}
+
+.ws-markup-list-add-markup-button {
+    border: 1px solid gainsboro;
+    color: #585858;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+.text-line-labels {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 30px 445px 445px 240px;
+    height: 65px;
+    background: white;
+    padding: 0 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.text-line-labels>p {
+    height: 65px;
+    line-height: 65px;
+    text-align: left;
+    font-size: 11pt;
+    font-weight: bold;
+    color: #414140;
+}
+
+.text-lines-main-container {
+    border: 1px solid #f1eee8;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.decorative-comment-arrow {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    display: block;
+    bottom: 40px;
+    right: 15px;
+    background: white;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 3px 4px #dbd9d9;
+}
+
+.ws-relation-window-entity {}
+
+.ws-relation-window-placeholder>span {
+    padding: 0 0 0 15px;
+}
+
+.file-upload-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    display: grid;
+    background: white;
+    box-shadow: 0 0 3px 0px white;
+    gap: 10px;
+}
+
+.file-upload-window>input {
+    width: 400px;
+    border: 1px solid gainsboro;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+}
+
+.file-upload-window>button {
+    border: 1px solid red;
+    height: 40px;
+    color: #484848;
+}
+
+.file-upload-window>select {
+    height: 40px;
+    line-height: 40px;
+    background: white;
+    border: 1px solid gainsboro;
+    padding: 0 20px;
+}
+
+.file-upload-window>textarea {
+    border: 1px solid gainsboro;
+    resize: none;
+    height: 220px;
+    padding: 15px 20px;
+}
+
+.text-info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 150px;
+    margin: 30px auto;
+}
+
+.text-info-container div {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 25px 30px;
+}
+
+.text-info-container div label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #969090;
+    margin: auto 0;
+    display: block;
+    height: max-content;
+    width: 160px;
+}
+
+.text-info-container div p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    height: max-content;
+    margin: auto 0;
+}
+
+.text-info-description {
+    border-top: 1px solid gainsboro;
+    padding: 30px 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.text-info-container-event-item {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ws-content {
+    margin-bottom: 200px;
+}
+
+
+.ws-node-label-delete {
+    height: 15px;
+    width: 30px;
+    color: white;
+    float: right;
+}
+
+.ws-node-label-delete:hover {
+    color: red;
+}
+
+.workspace-menu-content-selected {
+    background: gainsboro;
+}
+
+.text-all-lines-counter {
+    margin-left: 10px;
+}
+
+.workspace-text-mode-selected {
+    background: gainsboro;
+}
+
+.text-workspace-main-control-pannel>* {
+    float: left;
+}
+
+.text-workspace-main-control-pannel-block {
+    display: grid;
+    gap: 15px;
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid gainsboro;
+    height: 100%;
+}
+
+.text-workspace-main-control-pannel {
+    display: inline-flex;
+}
+
+.text-workspace-main-control-pannel-block>h1 {
+    color: #414140;
+}
+
+.workspace-title>button {
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    border: 1px solid gainsboro;
+    font-size: 10pt;
+    border-radius: 50px;
+    margin: 12px;
+    color: #414140;
+    background: white;
+}

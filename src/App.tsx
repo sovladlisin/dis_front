@@ -17,6 +17,8 @@ import Cabinet from './components/Cabinet';
 import OntologyTree from './components/Tree/OntologyTree';
 import OntologyTreePage from './components/Tree/OntologyTreePage';
 import ProjectLearn from './components/Project/ProjectLearn';
+import TextWorkspace from './components/Project/TextWorkspace/TextWorkspace';
+
 
 interface IAppProps {
 }
@@ -36,6 +38,7 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
       <Route path="/project/:id/customPage/:id" render={(props) => <Project slot={ProjectCustomPage} {...props} />} />
       <Route path="/graph/:uri" component={GraphLinked} />
 
+      <Route path="/project/:id/textEditor/:id" render={(props) => <Project slot={TextWorkspace} {...props} />} />
 
 
       <Route exact path="/cabinet" component={Cabinet} />

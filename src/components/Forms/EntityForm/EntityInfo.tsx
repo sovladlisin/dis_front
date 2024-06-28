@@ -3,28 +3,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TNode } from '../../../actions/graph/types';
 import { collectEntity, openEntity } from '../../../actions/ontology/ontology';
 import { RootStore } from '../../../store';
-import { CLASS, COMMENT, getNodeLabel, LABEL, OBJECT, renderEntityMedia, useOnClickOutside } from '../../../utils';
+import { CLASS, COMMENT, getNodeLabel, LABEL, OBJECT, renderEntityMedia, SERVER_URL_FILES, useOnClickOutside } from '../../../utils';
 import ItemSelectorButton from '../ItemSelectorButton';
 import Loading from '../../Loading';
+import { Link } from 'react-router-dom'
+import { encode } from 'punycode';
 
 interface IEntityInfoProps {
+    node?: TNode
 }
 
 const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
     const dispatch = useDispatch()
     const ontologyState = useSelector((state: RootStore) => state.ontology)
 
-    if (!ontologyState.opened_entity) return <></>
+    if (!props.node && !ontologyState.opened_entity) return <></>
 
     React.useEffect(() => {
-        if (ontologyState.opened_entity)
+        if (props.node)
+            dispatch(collectEntity(props.node.data.ontology_uri, props.node.data.uri))
+        else if (ontologyState.opened_entity)
             dispatch(collectEntity(ontologyState.opened_entity.ontology_uri, ontologyState.opened_entity.uri))
     }, [, ontologyState.opened_entity])
 
 
     React.useEffect(() => {
         if (!ontologyState.collected_entity) return;
-        if (ontologyState.collected_entity.data.uri != ontologyState.opened_entity.uri) return;
+        if (!props.node && ontologyState.collected_entity.data.uri != ontologyState.opened_entity.uri) return;
+        if (props.node && ontologyState.collected_entity.data.uri != props.node.data.uri) return;
         setNode(ontologyState.collected_entity)
     }, [ontologyState.collected_entity])
 
@@ -37,13 +43,13 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
             const name = getNodeLabel(att)
             const uri = att.data.uri
 
-            // const isFile = att.data[LABEL].includes('File@en')
+            const isFile = att.data[LABEL].includes('File@en')
             return <>
-                <label>{name}</label>
-                <p>{node.data.params_values[att.data.uri]}</p>
-
-                {/* {isFile && <span>File</span>}
-                {!isFile && <label>{node.data.params_values[uri]}</label>} */}
+                {!isFile && <>
+                    <label>{name}</label>
+                    <p>{node.data.params_values[att.data.uri]}</p>
+                </>}
+                {/* {isFile && <p>File</p>} */}
             </>
         })
 
@@ -87,7 +93,7 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
     </>
     if (!node) return <></>
     return <>
-        <div className='m-background'></div>
+        {!props.node && <div className='m-background'></div>}
         <div className='m-entity-info-container' >
             <div className='m-entity-info' ref={ref}>
                 {(node.data.file || node.data.connected_file) && <>
@@ -112,9 +118,31 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
                 <div className='m-entity-attributes'>
                     <div className='m-entity-fields'>
                         {renderAttributes()}
+                        {node.data.file?.url && <><label>Файл</label><p><Link className='entity-info-file-download' to={SERVER_URL_FILES + node.data.file.url}>Скачать</Link></p></>}
+
                         {renderObjectAttributes(1)}
                         {renderObjectAttributes(0)}
                     </div>
+                </div>
+
+                <div className='m-entity-mentions'>
+                    {node.data.text_mentions?.map(m => {
+                        return <>
+                            <div className='m-entity-mentions-item'>
+                                <Link target='__blank' className='color-white bg-blue' to={'/project/' + 'props.project.id' + '/textEditor/' + encode(m.original_object_uri)}>
+                                    <p>Перейти в текст</p>
+                                    <i className='fas fa-book-open'></i>
+                                </Link>
+
+                                <div className='m-entity-mentions-item-position'>
+                                    <p>{m.pos_start}</p>
+                                    <i className='fas fa-long-arrow-alt-right'></i>
+                                    <p>{m.pos_end}</p>
+                                </div>
+
+                            </div>
+                        </>
+                    })}
                 </div>
             </div>
         </div>

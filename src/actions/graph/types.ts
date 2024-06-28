@@ -63,7 +63,15 @@ export type TNodeData = {
 
 
     file: TNodeFile,
-    connected_file: TNodeFile
+    connected_file: TNodeFile,
+
+
+    text_mentions?: {
+        pos_start: number,
+        pos_end: number,
+        markup: number,
+        original_object_uri: string
+    }[]
 }
 
 export type TNodeFile = {

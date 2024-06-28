@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TPageBlock } from '../../../actions/projects/types';
+import { TPageBlock, TProject } from '../../../actions/projects/types';
 import BlockText from './BlockText';
 import { useDispatch } from 'react-redux';
 import { deletePageBlock } from '../../../actions/projects/projects';
@@ -9,7 +9,8 @@ import BlockMedia from './BlockMedia';
 
 interface IBlockContainerProps {
     block: TPageBlock,
-    devMode: boolean
+    devMode: boolean,
+    project: TProject
 }
 
 const BlockContainer: React.FunctionComponent<IBlockContainerProps> = (props) => {
@@ -24,7 +25,7 @@ const BlockContainer: React.FunctionComponent<IBlockContainerProps> = (props) =>
 
     return <>
         {props.block?.block_type === 'text' && <BlockText devMode={props.devMode} block={props.block} />}
-        {props.block?.block_type === 'bullet_list' && <BlockBulletList devMode={props.devMode} block={props.block} />}
+        {props.block?.block_type === 'bullet_list' && <BlockBulletList project={props.project} devMode={props.devMode} block={props.block} />}
         {props.block?.block_type === 'card_list' && <BlockCardList devMode={props.devMode} block={props.block} />}
         {props.block?.block_type === 'media' && <BlockMedia devMode={props.devMode} block={props.block} />}
     </>;

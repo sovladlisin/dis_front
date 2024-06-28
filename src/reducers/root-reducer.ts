@@ -6,6 +6,7 @@ import { settingsReducer } from "./settings-reducer";
 import { projectReducer } from "./project-reducer";
 import { fileReducer } from "./file-reducer";
 import { authReducer } from "./auth-reducer";
+import { markupReducer } from "./markup-reducer";
 
 
 
@@ -16,7 +17,8 @@ const RootReducer = combineReducers({
     settings: settingsReducer,
     projects: projectReducer,
     files: fileReducer,
-    auth: authReducer
+    auth: authReducer,
+    markup: markupReducer
 });
 
 export default RootReducer

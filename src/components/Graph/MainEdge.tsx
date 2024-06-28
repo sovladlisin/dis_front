@@ -54,7 +54,11 @@ export default function MainEdge({
                     style={{ fontSize: '12px' }}
                     startOffset="20%"
                     textAnchor="left"
-                    onClick={_ => isCtrlPress && dispatch(deleteRelation(data_l.ontology_uri, data_l.id))}
+                    onClick={_ => {
+                        console.log(data_l.id)
+                        isCtrlPress && dispatch(deleteRelation(data_l.ontology_uri, data_l.id))
+
+                    }}
                 >
                     {getTitle()}
                 </textPath>

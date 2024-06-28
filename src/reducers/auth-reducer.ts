@@ -5,7 +5,13 @@ interface IDefaultState {
 }
 
 const defaultState: IDefaultState = {
-    account: null,
+    account: {
+        id: -1,
+        vk_avatar: '',
+        vk_id: -1,
+        token: '',
+        vk_name: ''
+    },
 }
 
 export const authReducer = (state: IDefaultState = defaultState, action: TAuthDispatchTypes) => {

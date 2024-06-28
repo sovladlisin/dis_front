@@ -13,7 +13,12 @@ const FilePin: React.FunctionComponent<IFilePinProps> = (props) => {
         <div className='file-pin-container'>
             <label className='file-pin-id'>{props.file.id}</label>
             <p className='file-pin-title'>{props.file.name}</p>
-            <a className='file-pin-download-link' href={SERVER_URL_FILES + props.file.link}><i className='fas fa-share'></i></a>
+            <span className='file-pin-background'>
+                <i className='fas fa-file'></i>
+            </span>
+            <div className='file-pin-container-controls'>
+                <a className='file-pin-download-link' href={SERVER_URL_FILES + props.file.link}><i className='fas fa-share'></i></a>
+            </div>
         </div>
     </>;
 };

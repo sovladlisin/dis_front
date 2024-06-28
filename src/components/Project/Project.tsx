@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from '../../store';
 import { getOntologies, getResourceOntologies } from '../../actions/ontology/ontology';
 import { getProject } from '../../actions/projects/projects';
+import ProjectMediaBlock from './ProjectMediaBlock';
 
 
 interface IProjectProps {
@@ -42,6 +43,8 @@ const Project: React.FunctionComponent<IProjectProps> = (props) => {
             </div>
             <ProjectFooter project={project} />
         </>}
+
+        {projectState.media_node && <ProjectMediaBlock node={projectState.media_node} />}
     </>;
 };
 

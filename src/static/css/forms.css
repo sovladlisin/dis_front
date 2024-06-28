@@ -8,6 +8,8 @@
     border-radius: 10px;
     width: 600px;
     z-index: 100;
+    /*! overflow: auto; */
+    /*! max-height: 500px; */
 }
 
 .m-form-title {

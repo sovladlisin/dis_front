@@ -26,7 +26,7 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
     dispatch(login(id, name, avatar))
 
     React.useEffect(() => {
-        if (authState.account?.id) window.location.replace(HOST + 'cabinet')
+        if (authState.account?.token) window.location.replace(HOST + 'cabinet')
     }, [, authState.account])
     return <></>;
 };

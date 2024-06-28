@@ -188,13 +188,16 @@
 .project-files-list>div {
     float: left;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .file-pin-container {
-    height: 30px;
-    background: #ff5f5f;
+    height: 150px;
+    background: #ff8080;
     border-radius: 5px;
     color: white;
+    width: 130px;
+    position: relative;
 }
 
 .file-pin-id {
@@ -208,12 +211,15 @@
 
 .file-pin-title {
     float: left;
-    height: 30px;
-    line-height: 30px;
-    font-size: 9pt;
-    width: 150px;
+    line-height: 14px;
+    font-size: 8pt;
+    width: calc(100% - 20px);
     text-overflow: ellipsis;
     overflow: hidden;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
 }
 
 .file-pin-download-link {
@@ -364,6 +370,11 @@
     margin: 10px;
     font-weight: bold;
     color: #3e3e3e;
+    font-size: 10pt;
+    width: calc(100% - 275px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .block-bullet-list-node-container-title-icon {
@@ -379,15 +390,18 @@
 
 .block-bullet-list-node-container-controls {
     float: right;
+    gap: 15px;
+    margin: 0 20px 0 0;
 }
 
 .block-bullet-list-node-container-controls>button {
     height: 30px;
     line-height: 30px;
     width: 30px;
-    margin: 20px;
+    margin: 20px 0;
     border-radius: 5px;
     font-size: 8pt;
+    float: left;
 }
 
 .block-bullet-list-node-container-info {
@@ -699,7 +713,14 @@
 
 
 .project-home-span {
-    display: none;
+    display: block;
+    color: gainsboro;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-size: 32pt;
+    font-weight: bold;
 }
 
 .project-header-navigation>button {
@@ -708,4 +729,83 @@
     color: #4f4f4f;
     border: 1px solid #4f4f4f;
     border-radius: 10px;
+}
+
+.block-bullet-list-node-container-controls>a {
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 8pt;
+    float: left;
+    text-align: center;
+}
+
+.block-bullet-list-node-container-controls>* {
+    margin-left: 10px !important;
+    display: block;
+}
+
+.project-media-block-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 600px;
+    overflow: auto;
+    background: white;
+    z-index: 100;
+    border-radius: 10px;
+    display: grid;
+}
+
+.project-media-block-container>.m-entity-info-container {
+    position: unset;
+    width: calc(100% - 60px);
+    margin: 0 20px 20px 20px;
+}
+
+.project-media-block-player {
+    background: gainsboro;
+    margin: 20px;
+    border-radius: 10px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.entity-info-file-download {
+    color: #5454ff;
+    font-weight: bold;
+}
+
+.project-media-block-player>iframe {
+    height: inherit;
+    width: 100%;
+}
+
+.project-media-block-text-container {
+    white-space: break-spaces;
+    line-height: 23px;
+    padding: 10px;
+    height: calc(100% - 20px);
+    overflow: auto;
+}
+
+.file-pin-background {
+    position: absolute;
+    pointer-events: none;
+    bottom: 4px;
+    right: 5px;
+    font-size: 65pt;
+    color: #a24e4e3b;
+    z-index: 2;
+}
+
+.file-pin-container-controls {
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

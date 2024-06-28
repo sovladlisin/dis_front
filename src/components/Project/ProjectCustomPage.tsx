@@ -156,7 +156,7 @@ const ProjectCustomPage: React.FunctionComponent<IProjectCustomPageProps> = (pro
                         </div>
                     </>}
 
-                    <BlockContainer devMode={devMode} block={block} />
+                    <BlockContainer project={props.project} devMode={devMode} block={block} />
                 </div>
             })}
         </GridLayout>
