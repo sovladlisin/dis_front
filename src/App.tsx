@@ -30,26 +30,26 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
 
 
     <Switch>
-      <Route path="/project/:id/home" render={(props) => <Project slot={ProjectHome} {...props} />} />
-      <Route path="/project/:id/ontologies" render={(props) => <Project slot={ProjectOntologies} {...props} />} />
-      <Route path="/project/:id/learn" render={(props) => <Project slot={ProjectLearn} {...props} />} />
-      <Route path="/project/:id/resources" render={(props) => <Project slot={ProjectResources} {...props} />} />
-      <Route path="/project/:id/files" render={(props) => <Project slot={ProjectFiles} {...props} />} />
-      <Route path="/project/:id/customPage/:id" render={(props) => <Project slot={ProjectCustomPage} {...props} />} />
-      <Route path="/graph/:uri" component={GraphLinked} />
+      <Route path="/neo_graph/project/:id/home" render={(props) => <Project slot={ProjectHome} {...props} />} />
+      <Route path="/neo_graph/project/:id/ontologies" render={(props) => <Project slot={ProjectOntologies} {...props} />} />
+      <Route path="/neo_graph/project/:id/learn" render={(props) => <Project slot={ProjectLearn} {...props} />} />
+      <Route path="/neo_graph/project/:id/resources" render={(props) => <Project slot={ProjectResources} {...props} />} />
+      <Route path="/neo_graph/project/:id/files" render={(props) => <Project slot={ProjectFiles} {...props} />} />
+      <Route path="/neo_graph/project/:id/customPage/:id" render={(props) => <Project slot={ProjectCustomPage} {...props} />} />
+      <Route path="/neo_graph/graph/:uri" component={GraphLinked} />
 
-      <Route path="/project/:id/textEditor/:id" render={(props) => <Project slot={TextWorkspace} {...props} />} />
-
-
-      <Route exact path="/cabinet" component={Cabinet} />
-
-      <Route path="/ontology/tree/:uri" component={OntologyTreePage} />
+      <Route path="/neo_graph/project/:id/textEditor/:id" render={(props) => <Project slot={TextWorkspace} {...props} />} />
 
 
+      <Route exact path="/neo_graph/cabinet" component={Cabinet} />
+
+      <Route path="/neo_graph/ontology/tree/:uri" component={OntologyTreePage} />
 
 
-      <Route exact path="/" component={Landing} />
-      <Route exact path="/login" component={Login} />
+
+
+      <Route exact path="/neo_graph" component={Landing} />
+      <Route exact path="/neo_graph/login" component={Login} />
 
 
 

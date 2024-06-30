@@ -19,7 +19,7 @@ export const authReducer = (state: IDefaultState = defaultState, action: TAuthDi
         case AUTH_LOGIN:
             return {
                 ...state,
-                account: action.payload
+                account: action.payload != null ? action.payload : defaultState.account
             }
         case AUTH_LOGOUT:
             return {

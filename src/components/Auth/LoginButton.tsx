@@ -11,7 +11,7 @@ interface ILoginButtonProps {
 const LoginButton: React.FunctionComponent<ILoginButtonProps> = (props) => {
     VKID.Config.set({
         app: 51809959, // Идентификатор приложения.
-        redirectUrl: HOST + 'login', // Адрес для перехода после авторизации.
+        redirectUrl: HOST + 'neo_graph/login', // Адрес для перехода после авторизации.
     });
 
     // Обработчик клика.

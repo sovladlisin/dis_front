@@ -21,19 +21,19 @@ const ProjectHeader: React.FunctionComponent<IProjectHeaderProps> = (props) => {
     return <>
         <div className='project-header'>
             <div className='project-header-inner'>
-                <Link to={'/project/' + props.project.id + '/home'} className='project-header-name'>{props.project.name}</Link>
+                <Link to={'/neo_graph/project/' + props.project.id + '/home'} className='project-header-name'>{props.project.name}</Link>
                 <div className='project-header-controls'>
                     <button onClick={_ => setSettingsWindow(true)}><i className='fas fa-cog'></i></button>
                 </div>
                 <div className='project-header-navigation'>
                     <button onClick={_ => setPageWindow(true)}><i className='fas fa-plus'></i></button>
                     {props.project.pages?.map(n => {
-                        return <Link to={'/project/' + props.project.id + '/customPage/' + n.id}>{n.name}</Link>
+                        return <Link to={'/neo_graph/project/' + props.project.id + '/customPage/' + n.id}>{n.name}</Link>
                     })}
-                    <Link to={'/project/' + props.project.id + '/ontologies'}>Онтология</Link>
-                    <Link to={'/project/' + props.project.id + '/resources'}>Ресурсы</Link>
-                    <Link to={'/project/' + props.project.id + '/learn'}>Learn</Link>
-                    <Link className={'color-red'} to={'/project/' + props.project.id + '/files'}>Файлы</Link>
+                    <Link to={'/neo_graph/project/' + props.project.id + '/ontologies'}>Онтология</Link>
+                    <Link to={'/neo_graph/project/' + props.project.id + '/resources'}>Ресурсы</Link>
+                    <Link to={'/neo_graph/project/' + props.project.id + '/learn'}>Learn</Link>
+                    <Link className={'color-red'} to={'/neo_graph/project/' + props.project.id + '/files'}>Файлы</Link>
                 </div>
             </div>
         </div>

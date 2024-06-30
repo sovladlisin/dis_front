@@ -11,7 +11,7 @@ const Landing: React.FunctionComponent<ILandingProps> = (props) => {
     const authState = useSelector((state: RootStore) => state.auth)
 
     React.useEffect(() => {
-        if (authState.account?.id) window.location.replace(HOST + 'cabinet')
+        if (authState.account?.id) window.location.replace(HOST + 'neo_graph/cabinet')
     }, [, authState])
 
     return <>

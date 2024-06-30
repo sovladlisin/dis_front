@@ -21,7 +21,7 @@ const ProjectsPage: React.FunctionComponent<IProjectsPageProps> = (props) => {
                     <div className=''>
                         <p>{p.name}</p>
                         <div className='m-project-controls'>
-                            <Link className='m-list-open bg-blue color-white' target='_blank' to={'/project/' + p.id + '/home'}>Открыть</Link>
+                            <Link className='m-list-open bg-blue color-white' target='_blank' to={'/neo_graph/project/' + p.id + '/home'}>Открыть</Link>
                             <button onClick={_ => dispatch(deleteProject(p.id))} className=' color-white bg-red'><i className='fas fa-trash'></i></button>
                         </div>
                     </div>

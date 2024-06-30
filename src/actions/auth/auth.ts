@@ -28,7 +28,7 @@ export const logout = () => (dispatch: Dispatch<TAuthDispatchTypes>) => {
     dispatch({
         type: AUTH_LOGOUT,
     })
-    window.location.replace(HOST + '')
+    window.location.replace(HOST + 'neo_graph/')
 
 
 }

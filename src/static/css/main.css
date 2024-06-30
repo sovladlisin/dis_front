@@ -301,3 +301,14 @@
 .m-ontology-tree-section {
     border-left: 1px solid #c4c4c4;
 }
+
+.vk_auth_loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    font-size: 24pt;
+    font-weight: bold;
+    color: #626262;
+}

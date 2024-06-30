@@ -9,6 +9,7 @@ import {
 import { login } from '../../actions/auth/auth';
 import { RootStore } from '../../store';
 import { HOST } from '../../utils';
+import Loading from '../Loading';
 interface ILoginProps {
 }
 
@@ -23,12 +24,29 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
     const avatar = user['avatar']
     const dispatch = useDispatch()
     const authState = useSelector((state: RootStore) => state.auth)
-    dispatch(login(id, name, avatar))
+
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     React.useEffect(() => {
-        if (authState.account?.token) window.location.replace(HOST + 'cabinet')
+        dispatch(login(id, name, avatar))
+    }, [])
+
+
+    const redirect = async () => {
+        await sleep(2000)
+        if (authState.account != null && authState.account.token) window.location.replace(HOST + 'neo_graph/cabinet')
+    }
+
+    React.useEffect(() => {
+        redirect()
     }, [, authState.account])
-    return <></>;
+    return <>
+
+        <div className='vk_auth_loading'>
+            <Loading height={100} />
+            <p>Выполняется вход</p>
+        </div>
+    </>;
 };
 
 export default Login;

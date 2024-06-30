@@ -38,8 +38,8 @@ const ResOntologiesPage: React.FunctionComponent<IResOntologiesPageProps> = (pro
                         </div>
                         <p className='m-ontology-list-description'>{o.data.params_values[COMMENT]}</p>
                         <div className='m-ontology-list-controls'>
-                            <Link className=' color-white bg-blue' target='_blank' to={'/graph/' + encode(o.data.uri)}><i className='fas fa-project-diagram'></i><p>Открыть как граф</p></Link>
-                            <Link className=' color-white bg-blue' target='_blank' to={'/ontology/tree/' + encode(o.data.uri)}><i className='fas fa-stream'></i><p>Открыть как дерево</p></Link>
+                            <Link className=' color-white bg-blue' target='_blank' to={'/neo_graph/graph/' + encode(o.data.uri)}><i className='fas fa-project-diagram'></i><p>Открыть как граф</p></Link>
+                            <Link className=' color-white bg-blue' target='_blank' to={'/neo_graph/ontology/tree/' + encode(o.data.uri)}><i className='fas fa-stream'></i><p>Открыть как дерево</p></Link>
                             <button className=' color-white bg-blue' onClick={_ => setBranchResource(o)}><i className='fas fa-copy'></i><p>Наследовать</p></button>
                             <button className=' color-white bg-blue' onClick={_ => setEdit(o.data.uri)}><i className='fas fa-pen'></i><p>Редактировать</p></button>
                             <button className=' color-white bg-red' onClick={_ => onDeleteOntology(o.data.uri)}><i className='fas fa-trash'></i><p>Удалить</p></button>

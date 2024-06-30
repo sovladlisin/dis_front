@@ -56,7 +56,7 @@ const BlockBulletList: React.FunctionComponent<IBlockBulletListProps> = (props) 
 
                             <div className='block-bullet-list-node-container-controls'>
                                 {node.data?.file?.resource_type === 'txt' && <>
-                                    <Link target='__blank' className='color-white bg-blue' to={'/project/' + props.project.id + '/textEditor/' + encode(node.data.uri)}><i className='fas fa-book-open'></i></Link>
+                                    <Link target='__blank' className='color-white bg-blue' to={'/neo_graph/project/' + props.project.id + '/textEditor/' + encode(node.data.uri)}><i className='fas fa-book-open'></i></Link>
                                 </>}
                                 {node.data?.file?.resource_type && <>
                                     <button className='color-white bg-blue' onClick={_ => dispatch(setMediaBlock(node))} ><i className='fas fa-photo-video'></i></button>
