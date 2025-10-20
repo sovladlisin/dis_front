@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.tsx",
+  "homepage": "https://sovladlisin.github.io/dis_front",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development",
     "heroku-prebuild": "npm install --dev",
     "heroku-postbuild": "npm run build",
-    "start": "serve -s build"
+    "start": "serve -s build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +42,7 @@
     "axios": "^1.5.0",
     "css-loader": "^6.8.1",
     "dagre": "^0.8.5",
+    "gh-pages": "^6.3.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-grid-layout": "^1.4.4",
