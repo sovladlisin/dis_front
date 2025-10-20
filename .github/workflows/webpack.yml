@@ -26,4 +26,4 @@ jobs:
       run: |
         npm install --dev
         npm run predeploy
-        npm run start
+        npm run deploy
