@@ -26,9 +26,7 @@ interface IAppProps {
 const App: React.FunctionComponent<IAppProps> = (props) => {
   const [authWindow, setauthWindow] = React.useState(false)
   const ontologyState = useSelector((state: RootStore) => state.ontology)
-  return <Router
-  // basename="/dis_front"
-  >
+  return <Router>
 
 
     <Switch>
