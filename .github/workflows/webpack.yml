@@ -24,6 +24,6 @@ jobs:
 
     - name: Build
       run: |
-        npm run install --dev
+        npm install --dev
         npm run predeploy
         npm run start
