@@ -14,7 +14,9 @@ interface IItemSelectorButtonProps {
     labels: string[],
     ontology_uri: string,
     selected: TNode,
-    custom_q?: string
+    custom_q?: string,
+    onAddNewRelation?: () => void,
+    isAddNewRelationButton?: boolean
 }
 
 const ItemSelectorButton: React.FunctionComponent<IItemSelectorButtonProps> = (props) => {
@@ -50,9 +52,12 @@ const ItemSelectorButton: React.FunctionComponent<IItemSelectorButtonProps> = (p
 
     const [search, setSearch] = React.useState('')
     return <>
-
-
-        <label>{props.title}</label>
+        <label>
+            {props.isAddNewRelationButton && <>
+                <button onClick={props.onAddNewRelation} className='entity-form-object-relations-add-similar-relation'><i className='fas fa-plus'></i></button>
+            </>}
+            {props.title}
+        </label>
         <div className='form-main-item-selector-button-container'>
             {selectorMenu && <>
                 <div className='form-main-item-selector-button-window'>

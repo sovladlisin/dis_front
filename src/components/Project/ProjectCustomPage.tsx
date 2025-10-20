@@ -27,7 +27,7 @@ const ProjectCustomPage: React.FunctionComponent<IProjectCustomPageProps> = (pro
     const projectState = useSelector((state: RootStore) => state.projects)
 
 
-    const [devMode, setDevMode] = React.useState(true)
+    const [devMode, setDevMode] = React.useState(false)
 
 
     const [page, setPage] = React.useState<TPage>(null)

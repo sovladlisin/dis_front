@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { useCallback } from 'react';
 
-import 'reactflow/dist/style.css';
 import MainEdge from './MainEdge';
 import MainNode from './MainNode';
 import { useDispatch, useSelector } from 'react-redux';
-import { applyPattern, collectPatterns, createObject, createRelation, deleteEntity, getGraph, savePattern, toggleNode } from '../../actions/graph/graph';
+import { applyPattern, collectPatterns, createObject, createRelation, deleteEntity, getGraph, saveNodesPosition, savePattern, toggleNode } from '../../actions/graph/graph';
 import { RootStore } from '../../store';
 import Loading from '../Loading';
-import { TArc, TNode, TPattern } from '../../actions/graph/types';
-import { calcNodeWidthForLayout, checkPattern, CLASS, DATATYPE_PROPERTY, decode, getRandomInt, HAS_TYPE, MAIN_MARKER, OBJECT, OBJECT_PROPERTY, PROPERTY_DOMAIN, PROPERTY_RANGE, SUB_CLASS } from '../../utils';
+import { GRAPH_CONFIG_HORIZONTAL, GRAPH_CONFIG_VERTICAL, TArc, TNode, TNodePosition, TPattern, TSavedNodePosition, TSavedOntologyGraphLayout } from '../../actions/graph/types';
+import { calcNodeHeightForLayout, calcNodeWidthForLayout, checkPattern, CLASS, DATATYPE_PROPERTY, decode, getRandomInt, HAS_TYPE, MAIN_MARKER, OBJECT, OBJECT_PROPERTY, PROPERTY_DOMAIN, PROPERTY_RANGE, SUB_CLASS } from '../../utils';
 import ClassForm from '../Forms/ClassForm';
 import ObjectForm from '../Forms/ObjectForm';
 import PatternMenu from './PatternMenu';
@@ -18,7 +17,7 @@ import ApplyPatternForm from '../Forms/ApplyPatternForm';
 import EntityForm from '../Forms/EntityForm/EntityForm';
 import { openEntity } from '../../actions/ontology/ontology';
 import OntologyPatternMenu from './OntologyPatternMenu';
-import ReactFlow, { useOnSelectionChange, useReactFlow, MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, applyEdgeChanges } from 'reactflow';
+import { ReactFlow, useOnSelectionChange, useReactFlow, MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, applyEdgeChanges } from '@xyflow/react';
 import GraphFlowWithProvider from './GraphFlowWithProvider';
 
 interface IGraphProps {
@@ -30,10 +29,12 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
     const dispatch = useDispatch()
     React.useEffect(() => { dispatch(getGraph(ontology_uri)) }, [])
     const graphState = useSelector((state: RootStore) => state.graph)
+    const ontologyLayout = useSelector((state: RootStore) => state.graph.ontologies_layout)
 
     // filters
     const [selectedFilter, setSelectedFilters] = React.useState(1)
     const [showFilterWindow, setShowFilterWindow] = React.useState(false)
+    const [graphConfig, setGraphConfig] = React.useState(GRAPH_CONFIG_HORIZONTAL)
 
     React.useEffect(() => {
         const d_nodes = graphState.nodes.map(n => {
@@ -48,7 +49,8 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
                 onOpenEntity: onOpenEntity,
                 onNodeConnect: onNodeConnect,
                 onEdit: onEdit,
-                toggled_data: getToggledData(n, graphState.arcs)
+                toggled_data: getToggledData(n, graphState.arcs),
+                graph_direction: graphConfig.rankdir
             }
             return n
         })
@@ -58,8 +60,14 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
             e.animated = false
             return e
         }))
+
+
+        const f: TSavedOntologyGraphLayout[] = ontologyLayout
+
+
+
         updateGraphLayout(d_nodes, graphState.arcs)
-    }, [graphState.arcs, graphState.nodes, selectedFilter])
+    }, [graphState.arcs, graphState.nodes, selectedFilter, graphConfig])
 
     const nodeTypes = React.useMemo(() => ({ mainNode: MainNode }), []);
     const edgeTypes = React.useMemo(() => ({ mainEdge: MainEdge }), []);
@@ -98,9 +106,17 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
 
     // layout
     const updateGraphLayout = (l_nodes: TNode[] | any, l_edges: TArc[] | any) => {
+        var old_nodes_dict = {}
+        const target_layout_ontologies: TSavedOntologyGraphLayout[] = ontologyLayout.filter(n => n.ontology_uri === ontology_uri)
+        target_layout_ontologies.map(l => {
+            l.nodes.map(n => {
+                old_nodes_dict[n.uri] = n.position
+            })
+        })
+
         var dagre = require("dagre");
         var g = new dagre.graphlib.Graph();
-        g.setGraph({ rankdir: 'BT', nodesep: 10, minlen: 2, ranksep: 150, ranker: 'network-simplex' });
+        g.setGraph(graphConfig);
         g.setDefaultEdgeLabel(function () { return {}; });
 
         var filter = []
@@ -131,7 +147,7 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
             }
         })
 
-        l_nodes_new.map(node => { g.setNode(node.data.uri, { label: node.data.uri, width: calcNodeWidthForLayout(node), height: 35 }); })
+        l_nodes_new.map(node => { g.setNode(node.data.uri, { label: node.data.uri, width: calcNodeWidthForLayout(node), height: calcNodeHeightForLayout(node) }); })
         dagre.layout(g);
         var new_nodes = {}
         g.nodes().map(node_id => {
@@ -140,7 +156,9 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
             new_nodes[node_id] = { x, y }
         })
         setNodes(l_nodes_new.map(node => {
-            node.position.x = new_nodes[node.data.uri].x - calcNodeWidthForLayout(node) / 2
+
+
+            node.position.x = new_nodes[node.data.uri].x
             node.position.y = new_nodes[node.data.uri].y
             return node
         }))
@@ -195,6 +213,40 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
     const [ontologyPatternMenu, setOntologyPatternMenu] = React.useState(false)
 
 
+    const onNodeDragStop = (event, node: TNode, nodes) => {
+        const x = node.position.x
+        const y = node.position.y
+
+        var nodes_array: TNode[] = graphState.nodes
+
+        const result: TSavedNodePosition[] = nodes_array.map(n => {
+            if (n.data.uri === node.data.uri) {
+                const temp: TSavedNodePosition = {
+                    position: {
+                        x: x,
+                        y: y,
+                    },
+                    uri: n.data.uri,
+                    ontology_uri: n.data.ontology_uri
+                }
+                return temp
+            }
+            const temp: TSavedNodePosition = {
+                position: {
+                    x: n.position.x,
+                    y: n.position.y,
+                },
+                uri: n.data.uri,
+                ontology_uri: n.data.ontology_uri
+            }
+            return temp
+        })
+        console.log(result)
+        dispatch(saveNodesPosition(ontology_uri, result))
+    }
+
+
+
     return <>
 
         <div className='graph-main-container'>
@@ -240,18 +292,23 @@ const Graph: React.FunctionComponent<IGraphProps> = (props) => {
                     edges={edges}
                     onNodesChange={onNodesChange}
                     onEdgesChange={onEdgesChange}
-
                     onConnect={onConnect}
                     // @ts-ignore
                     edgeTypes={edgeTypes}
                     // @ts-ignore
                     nodeTypes={nodeTypes}
+                    onNodeDragStop={onNodeDragStop}
 
 
                 />
             </>
             }
         </div>
+
+        {/* <div className='graph-config-selector'>
+            <button onClick={_ => setGraphConfig(GRAPH_CONFIG_VERTICAL)} className={graphConfig.rankdir === 'BT' ? 'selected' : ''}>Вертикально</button>
+            <button onClick={_ => setGraphConfig(GRAPH_CONFIG_HORIZONTAL)} className={graphConfig.rankdir === 'RL' ? 'selected' : ''}>Горизонтально</button>
+        </div> */}
 
     </>
 }

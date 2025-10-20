@@ -20,7 +20,7 @@ import './src/static/css/text.css'
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-
+import '@xyflow/react/dist/style.css';
 
 import { persistStore } from 'redux-persist'
 import store from './src/store'

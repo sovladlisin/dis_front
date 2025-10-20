@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TNode, TPattern, TPatternArc, TPatternNode } from '../../../actions/graph/types';
-import ReactFlow, { MarkerType, Background, ReactFlowProvider, useReactFlow, Controls, MiniMap, useNodesState, useEdgesState, addEdge } from 'reactflow';
+import { ReactFlow, MarkerType, Background, ReactFlowProvider, useReactFlow, Controls, MiniMap, useNodesState, useEdgesState, addEdge } from '@xyflow/react';
 import { CLASS, DATATYPE_PROPERTY, getRandomInt, HAS_TYPE, MAIN_MARKER, OBJECT, OBJECT_PROPERTY, PROPERTY_DOMAIN, PROPERTY_RANGE, SUB_CLASS } from '../../../utils';
 import PatternNode from './PatternNode';
 import ItemSelector from './ItemSelector';

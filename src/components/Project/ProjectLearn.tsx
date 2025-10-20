@@ -34,8 +34,8 @@ const ProjectLearn: React.FunctionComponent<IProjectLearnProps> = (props) => {
 
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
     const updateEmb = async () => {
-        await sleep(3000);
-        dispatch(getProjectEmbedding(props.project.id))
+        // await sleep(3000);
+        // dispatch(getProjectEmbedding(props.project.id))
     }
 
     React.useEffect(() => {

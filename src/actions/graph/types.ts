@@ -18,12 +18,52 @@ export const GRAPH_GET_CLASS_OBJECTS = 'GRAPH_GET_CLASS_OBJECTS'
 
 export const GRAPH_UPDATE_SELECTION = 'GRAPH_UPDATE_SELECTION'
 
+export const GRAPH_CREATE_ARC = 'GRAPH_CREATE_ARC'
 
+export const GRAPH_SAVE_ONTOLOGY_LAYOUT = 'GRAPH_SAVE_ONTOLOGY_LAYOUT'
+
+
+
+export const GRAPH_CONFIG_HORIZONTAL = {
+    rankdir: 'RL',
+    nodesep: 25,
+    minlen: 2,
+    ranksep: 130,
+    ranker: 'network-simplex'
+}
+export const GRAPH_CONFIG_VERTICAL = {
+    rankdir: 'BT',
+    nodesep: 10,
+    minlen: 2,
+    ranksep: 150,
+    ranker: 'network-simplex'
+}
+
+
+// SAVING POSITIONS =========================================================================================
+
+export type TSavedOntologyGraphLayout = {
+    nodes: TSavedNodePosition[],
+    ontology_uri: string
+}
+
+export type TSavedNodePosition = {
+    ontology_uri: string,
+    uri: string,
+    position: TNodePosition
+}
+
+export type TNodePosition = {
+    x: number,
+    y: number
+}
+
+// END SAVING POSITIONS =========================================================================================
 
 
 export type TNode = {
     id: string,
-    position: { x: number, y: number },
+    position: TNodePosition,
     type: string,
     data: TNodeData,
     draggable: boolean,
@@ -49,6 +89,9 @@ export type TNodeData = {
     onEdit?: (uri: string) => void,
     onOpenEntity?: (ontology_uri: string, uri: string) => void,
     onNodeConnect?: (source: string, target: string) => void,
+
+    graph_direction?: "RL" | "BT",
+
     is_toggled: boolean,
     toggled_data: string[],
 
@@ -85,6 +128,7 @@ export type TNodeFile = {
 }
 
 export type TObjectTypeAttribute = {
+    id?: string,
     field: TNode,
     range: TNode,
     value?: TNode,
@@ -147,6 +191,16 @@ export type TPatternArc = {
     markerEnd: any
 }
 
+
+interface ISaveNodesPosition {
+    type: typeof GRAPH_SAVE_ONTOLOGY_LAYOUT,
+    payload: TSavedOntologyGraphLayout
+}
+
+interface ICreateRelation {
+    type: typeof GRAPH_CREATE_ARC,
+    payload: TArc
+}
 interface IUploadNodes {
     type: typeof GRAPH_GET_GRAPH | typeof GRAPH_CREATE_NODES | typeof GRAPH_UPDATE_NODES
     payload: { nodes: TNode[], arcs?: TArc[], arc_names?: TNode[] }
@@ -191,4 +245,4 @@ interface getNodes {
     payload: TNode[]
 }
 
-export type TGraphDispatchTypes = IUpdateSelection | getNodes | ISetPatternItems | IUploadNodes | Loading | IRemoveNodes | IToggleNode | IHighlightNode | IGraphSavePattern | IGraphDeletePattern
+export type TGraphDispatchTypes = ISaveNodesPosition | ICreateRelation | IUpdateSelection | getNodes | ISetPatternItems | IUploadNodes | Loading | IRemoveNodes | IToggleNode | IHighlightNode | IGraphSavePattern | IGraphDeletePattern

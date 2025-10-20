@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
-import { MarkerType } from "reactflow"
+import { MarkerType } from "@xyflow/react"
 import { TAlert } from "./actions/alerts/types"
 import { TArc, TNode, TNodeData, TNodeFile, TPattern, TPatternNode } from "./actions/graph/types"
 import { TSettings } from "./actions/settings/types"
 // import { TClass, TConnectedVisualItem, TObjectExtended } from "./actions/ontology/classes/types"
 export const HOST = window.location.host.includes('local') ? "http://" + window.location.host + '/' : "https://" + window.location.host + '/'
 
-export const SERVER_URL = 'https://infra.iis.nsk.su/neo_graph_server/'
-// export const SERVER_URL = 'http://127.0.0.1:8000/'
-// export const SERVER_URL_FILES = 'http://127.0.0.1:8000'
-export const SERVER_URL_FILES = 'https://infra.iis.nsk.su'
+// export const SERVER_URL = 'https://infra.iis.nsk.su/neo_graph_server/'
+export const SERVER_URL = 'http://127.0.0.1:8000/'
+export const SERVER_URL_FILES = 'http://127.0.0.1:8000'
+// export const SERVER_URL_FILES = 'https://infra.iis.nsk.su'
 
 
 
@@ -64,6 +64,7 @@ export const renderEntityMedia = (f: TNode) => {
     if (local_file === null) return <></>;
 
     switch (local_file.resource_type) {
+        //@ts-ignore
         case 'jpeg' || 'png' || 'webp' || 'jpg':
             return <img src={'data:image/' + 'PNG' + ';base64,' + local_file.file_object} />
         case 'txt':
@@ -122,9 +123,19 @@ export const checkEntityMedia = (f: TNode) => {
 // // }
 
 export const calcNodeWidthForLayout = (node: TNode) => {
-    const letters = getNodeLabel(node).length
-    return (7.5 * letters) + 40
+    var words = getNodeLabel(node).split(' ').sort((a, b) => a.length > b.length ? -1 : 1)
+    const longest_word = words[0]
+    const letters = longest_word.length
+    return (7.5 * letters) + 130
 }
+export const calcNodeHeightForLayout = (node: TNode) => {
+    var words = getNodeLabel(node).split(' ')
+    var words_sorted = words.sort((a, b) => a.length > b.length ? -1 : 1)
+    var longest_word = words_sorted[0]
+    var short_words = words.map(w => w.length < longest_word.length).length
+    return 35 + (short_words * 15)
+}
+
 export const getNodeColorClass = (node: TNode) => {
     if (node.data.labels.includes(CLASS))
         return 'node-class'

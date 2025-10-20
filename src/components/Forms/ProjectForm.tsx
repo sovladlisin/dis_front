@@ -74,15 +74,15 @@ const ProjectForm: React.FunctionComponent<IProjectFormProps> = (props) => {
     const [resourceOntologyClasses, setResourceOntologyClasses] = React.useState<TNode[]>([])
     const onResLoad = async () => {
         const params = withToken({ uri: project.res_ontologies_uris })
-        var response = await axios.get(SERVER_URL + '/getGraph', params)
+        var response = await axios.get(SERVER_URL + 'getGraph', params)
         const items: TNode[] = response.data.nodes
 
         const n_i = items.filter(n => n.data.labels.includes(CLASS))
         setResourceOntologyClasses(n_i)
     }
-    React.useEffect(() => {
-        onResLoad()
-    }, [])
+    // React.useEffect(() => {
+    //     onResLoad()
+    // }, [])
 
     return <>
         <div className='m-form' ref={ref}>

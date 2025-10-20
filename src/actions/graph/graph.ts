@@ -1,5 +1,5 @@
 import { Dispatch } from "react"
-import { GRAPH_CREATE_NODES, GRAPH_DELETE_PATTERN, GRAPH_GET_GRAPH, GRAPH_HIGHLIGHT_NODE, GRAPH_IS_LOADING, GRAPH_REMOVE_NODES, GRAPH_SAVE_PATTERN, GRAPH_SET_PATTERNS, GRAPH_TOGGLE_NODE, GRAPH_UPDATE_NODES, GRAPH_UPDATE_SELECTION, TArc, TGraphDispatchTypes, TNode, TPattern } from "./types"
+import { GRAPH_CREATE_ARC, GRAPH_CREATE_NODES, GRAPH_DELETE_PATTERN, GRAPH_GET_GRAPH, GRAPH_HIGHLIGHT_NODE, GRAPH_IS_LOADING, GRAPH_REMOVE_NODES, GRAPH_SAVE_ONTOLOGY_LAYOUT, GRAPH_SAVE_PATTERN, GRAPH_SET_PATTERNS, GRAPH_TOGGLE_NODE, GRAPH_UPDATE_NODES, GRAPH_UPDATE_SELECTION, TArc, TGraphDispatchTypes, TNode, TPattern, TSavedNodePosition } from "./types"
 import axios from 'axios'
 import { SERVER_URL } from "../../utils"
 import { withToken } from "../auth/auth"
@@ -238,8 +238,24 @@ export const createRelation = (source: string, target: string, ontology_uri: str
     const body = JSON.stringify({ ontology_uri, target, source })
 
     axios.post(SERVER_URL + 'api/createRelation', body).then(res => {
-
+        dispatch({
+            type: GRAPH_CREATE_ARC,
+            payload: res.data.arcs[0]
+        })
 
     })
 
 }
+
+
+export const saveNodesPosition = (ontology_uri: string, nodes_position: TSavedNodePosition[]) => (dispatch: Dispatch<TGraphDispatchTypes>) => {
+    console.log('saveNodesPosition')
+    dispatch({
+        type: GRAPH_SAVE_ONTOLOGY_LAYOUT,
+        payload: { ontology_uri: ontology_uri, nodes: nodes_position }
+    })
+}
+
+
+
+

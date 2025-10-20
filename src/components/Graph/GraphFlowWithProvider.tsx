@@ -1,6 +1,5 @@
 import * as React from 'react';
-import ReactFlow, { useOnSelectionChange, ReactFlowProvider, useReactFlow, Controls, MiniMap, useKeyPress } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, useOnSelectionChange, ReactFlowProvider, useReactFlow, Controls, MiniMap, useKeyPress } from '@xyflow/react';
 import { useCallback } from 'react';
 import SearchWindow from './SearchWindow';
 import { calcNodeWidthForLayout, getNodeColor } from '../../utils';

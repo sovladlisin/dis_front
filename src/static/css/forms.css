@@ -8,8 +8,8 @@
     border-radius: 10px;
     width: 600px;
     z-index: 100;
-    /*! overflow: auto; */
-    /*! max-height: 500px; */
+    max-height: 500px;
+    overflow: auto;
 }
 
 .m-form-title {
@@ -26,7 +26,7 @@
     grid-template-columns: auto auto;
     gap: 10px;
     overflow: auto;
-    max-height: 500px;
+    max-height: 320px;
 }
 
 .m-form-fields>label {
@@ -216,12 +216,14 @@ input {
     display: grid;
     grid-template-columns: auto auto;
     gap: 10px;
+    position: relative;
 }
 
 .m-form-entity-form-section-fields label {
     height: 30px;
     line-height: 30px;
     font-size: 9pt;
+    position: relative;
 }
 
 .m-form select {
@@ -366,6 +368,7 @@ input {
     top: -60px;
     left: 0;
     display: inline-flex;
+    z-index: 119;
 }
 
 .m-form-block-types-container>button {
@@ -400,4 +403,16 @@ input {
 
 .form-main-item-selector-button-window-items-item-check {
     padding: 0 10px;
+}
+
+.entity-form-object-relations-add-similar-relation {
+    position: absolute;
+    background: #48c148;
+    color: white;
+    height: 20px;
+    width: 20px;
+    border-radius: 30px;
+    font-size: 7pt;
+    top: -5px;
+    left: -20px;
 }

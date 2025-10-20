@@ -306,3 +306,59 @@
 .locked_node {
     opacity: 0.5 !important;
 }
+
+
+.graph-config-selector {
+    position: fixed;
+    bottom: 210px;
+    right: 20px;
+    display: grid;
+    justify-content: right;
+    align-content: revert;
+    gap: 5px;
+    z-index: 9;
+}
+
+.graph-config-selector>button {
+    background: white;
+    color: black;
+    font-size: 10pt;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.graph-config-selector>button.selected {
+    background: #5f9dff;
+    color: white;
+}
+
+
+.graph-arc-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 20px;
+    background: white;
+    line-height: 20px;
+    border-radius: 20px;
+    gap: 5px;
+    padding: 0 5px;
+    border: 1px solid #b1b1b7;
+}
+
+.graph-arc-container>p {
+    font-size: 6pt;
+    height: 20px;
+    line-height: 20px;
+}
+
+.graph-arc-container-delete {
+    height: 12px;
+    width: 12px;
+    background: #adadad;
+    color: white;
+    border-radius: 20px;
+    font-size: 5pt;
+    text-align: center;
+    line-height: 12px;
+    margin: 4px;
+}

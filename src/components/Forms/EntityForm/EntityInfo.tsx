@@ -58,11 +58,18 @@ const EntityInfo: React.FunctionComponent<IEntityInfoProps> = (props) => {
     const redirect = (ontology_uri: string, uri: string) => {
         dispatch(openEntity({ ontology_uri, uri }))
     }
-
+    const copyContent = async (text) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            console.log('Content copied to clipboard');
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+        }
+    }
     const renderObjectAttributes = (direction: number) => {
         return node.data.obj_attributes.filter(att => att.direction === direction).map(att => {
             return <>
-                <label>{getNodeLabel(att.field)}</label>
+                <label onClick={_ => copyContent(att.value.data.uri)}>{getNodeLabel(att.field)}</label>
                 {att.value ? <label onClick={_ => redirect(att.value.data.ontology_uri, att.value.data.uri)} className='form-class-label-value'>{getNodeLabel(att.value)}</label > : <label>Не указано</label>}
             </>
         })

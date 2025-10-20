@@ -1,4 +1,4 @@
-import { GRAPH_CREATE_NODES, GRAPH_DELETE_PATTERN, GRAPH_GET_CLASS_OBJECTS, GRAPH_GET_GRAPH, GRAPH_HIGHLIGHT_NODE, GRAPH_IS_LOADING, GRAPH_REMOVE_NODES, GRAPH_SAVE_PATTERN, GRAPH_SET_PATTERNS, GRAPH_TOGGLE_NODE, GRAPH_UPDATE_NODES, GRAPH_UPDATE_SELECTION, TArc, TGraphDispatchTypes, TNode, TPattern } from "../actions/graph/types";
+import { GRAPH_CREATE_ARC, GRAPH_CREATE_NODES, GRAPH_DELETE_PATTERN, GRAPH_GET_CLASS_OBJECTS, GRAPH_GET_GRAPH, GRAPH_HIGHLIGHT_NODE, GRAPH_IS_LOADING, GRAPH_REMOVE_NODES, GRAPH_SAVE_ONTOLOGY_LAYOUT, GRAPH_SAVE_PATTERN, GRAPH_SET_PATTERNS, GRAPH_TOGGLE_NODE, GRAPH_UPDATE_NODES, GRAPH_UPDATE_SELECTION, TArc, TGraphDispatchTypes, TNode, TPattern, TSavedNodePosition, TSavedOntologyGraphLayout } from "../actions/graph/types";
 
 interface IDefaultState {
     nodes: TNode[],
@@ -10,7 +10,12 @@ interface IDefaultState {
 
     arc_names: TNode[],
 
-    selection: { nodes: TNode[], arcs: TArc[] }
+    selection: { nodes: TNode[], arcs: TArc[] },
+
+    saved_positions: TSavedNodePosition[],
+
+    ontologies_layout: TSavedOntologyGraphLayout[]
+
 }
 
 const defaultState: IDefaultState = {
@@ -23,11 +28,32 @@ const defaultState: IDefaultState = {
 
     arc_names: [],
 
-    selection: { nodes: [], arcs: [] }
+    selection: { nodes: [], arcs: [] },
+
+    saved_positions: [],
+
+    ontologies_layout: [],
 }
 
 export const graphReducer = (state: IDefaultState = defaultState, action: TGraphDispatchTypes) => {
     switch (action.type) {
+
+        case GRAPH_SAVE_ONTOLOGY_LAYOUT:
+            console.log('GRAPH_SAVE_ONTOLOGY_LAYOUT')
+            let ontology_uri = action.payload.ontology_uri
+            let nodes = action.payload.nodes
+            const found = state.ontologies_layout.find(o => o.ontology_uri === ontology_uri)
+            if (!found) {
+                return {
+                    ...state,
+                    ontologies_layout: [action.payload]
+                }
+            }
+            return {
+                ...state,
+                ontologies_layout: state.ontologies_layout.map(o => o.ontology_uri === ontology_uri ? { ...o, nodes: nodes } : o)
+            }
+
         case GRAPH_UPDATE_SELECTION:
             return {
                 ...state,
@@ -42,13 +68,21 @@ export const graphReducer = (state: IDefaultState = defaultState, action: TGraph
 
         case GRAPH_UPDATE_NODES:
             var new_nodes = {}
+
             action.payload.nodes.map(n => {
                 new_nodes[n.data.uri] = n
             })
             return {
                 ...state,
-                nodes: state.nodes.map(n => Object.keys(new_nodes).includes(n.data.uri) ? new_nodes[n.data.uri] : n)
+                nodes: state.nodes.map(n => Object.keys(new_nodes).includes(n.data.uri) ? new_nodes[n.data.uri] : n),
             }
+
+        case GRAPH_CREATE_ARC:
+            return {
+                ...state,
+                arcs: [...state.arcs, action.payload]
+            }
+
         case GRAPH_SET_PATTERNS:
             return {
                 ...state,

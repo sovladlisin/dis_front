@@ -4,7 +4,7 @@ import { addClassAttribute, addClassObjectAttribute, updateEntity, updateEntityF
 import { TNode, TObjectTypeAttribute } from '../../../actions/graph/types';
 import { collectEntity } from '../../../actions/ontology/ontology';
 import { RootStore } from '../../../store';
-import { CLASS, COMMENT, getNodeLabel, LABEL, OBJECT, useOnClickOutside } from '../../../utils';
+import { CLASS, COMMENT, getNodeLabel, LABEL, makeId, OBJECT, useOnClickOutside } from '../../../utils';
 import Loading from '../../Loading';
 import ItemSelectorButton from '../ItemSelectorButton';
 import LabelForm from '../LabelForm';
@@ -34,6 +34,9 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
         if (ontologyState.collected_entity.data.uri != props.uri) return;
         setIsObject(!ontologyState.collected_entity.data.labels.includes(CLASS))
         console.log('collected_entity', ontologyState.collected_entity)
+
+
+
         setNode(ontologyState.collected_entity)
     }, [ontologyState.collected_entity])
 
@@ -47,7 +50,7 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
         setNode({
             ...node, data: {
                 ...node.data, obj_attributes: node.data.obj_attributes.map(oa => {
-                    if (oa.field.data.uri === attr.field.data.uri && oa.direction === direction)
+                    if (oa.id === attr.id)
                         return attr
                     return oa
                 })
@@ -91,17 +94,32 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
 
     }
 
+    const addEmptyObjectRelation = (rel: TObjectTypeAttribute) => {
+        setNode({ ...node, data: { ...node.data, obj_attributes: [...node.data.obj_attributes, rel] } })
+    }
+
     const renderObjectAttributes = (direction: number) => {
         return node.data.obj_attributes.filter(att => att.direction === direction).map(att => {
             console.log(direction)
+
+            //field = uri rel
+            // range = uri type
+
+
             return <>
-                {isObject &&
+                {isObject && <>
                     <ItemSelectorButton
                         onChange={val => setNodeObjectParam({ ...att, value: val }, direction)}
                         title={getNodeLabel(att.field)}
                         labels={[OBJECT, att.range.data.uri]}
                         selected={att.value}
-                        ontology_uri={props.ontology_uri} />
+                        ontology_uri={props.ontology_uri}
+
+                        onAddNewRelation={() => addEmptyObjectRelation({ field: att.field, range: att.range, direction: att.direction, id: makeId(100) })}
+                        isAddNewRelationButton={true}
+                    />
+
+                </>
                 }
                 {!isObject &&
                     <>
@@ -137,7 +155,7 @@ const EntityForm: React.FunctionComponent<IEntityFormProps> = (props) => {
     </>
     if (!node) return <></>
     return <>
-
+        <div className='m-background' onClick={_ => props.onClose()}></div>
         <div className='m-form' >
             {addingClassAttribute && <AddClassAttribute onClose={() => setAddingClassAttribute(false)} onSelect={(label) => onAddClassAttribute(label)} />}
             {addingClassObjectAttribute && <AddClassObjectAttribute ontology_uri={props.ontology_uri} onClose={() => setAddingClassObjectAttribute(null)} onSelect={(label, range) => onAddClassObjectAttribute(label, range)} />}

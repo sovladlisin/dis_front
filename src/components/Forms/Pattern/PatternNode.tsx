@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Handle, Position } from 'reactflow';
+import { Handle, Position } from '@xyflow/react';
 import { TNode, TPatternNode } from '../../../actions/graph/types';
 import { getNodeColorClass, getNodeLabel, getPatternNodeColorClass, useOnClickOutside } from '../../../utils';
 
