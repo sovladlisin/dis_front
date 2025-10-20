@@ -6,7 +6,7 @@ module.exports = {
     output: {
         filename: "index.js",
         path: path.resolve(__dirname, "build"),
-        publicPath: '/'
+        publicPath: '/dis_front/'
     },
     plugins: [
         new HtmlWebpackPlugin({
